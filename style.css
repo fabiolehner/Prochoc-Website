@@ -163,6 +163,11 @@ a{
   color: black;
 }
 
+a.white{
+    text-decoration: none;
+    color: #999999;
+  }
+
 .product{
     width: 400px;
     height: 530px;
@@ -312,13 +317,11 @@ img{
     }
     
 }
-
-  /* STYLES SPECIFIC TO FOOTER  */
   .footer {
     width: 100%;
     position: relative;
     height: auto;
-    background-color: #070617;
+    background-color: #000000;
   }
   .footer .col {
     width: 190px;
