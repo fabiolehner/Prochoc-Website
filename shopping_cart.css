@@ -1,0 +1,15 @@
+
+.shopping-cart-card {
+    position: fixed;
+    float: right;
+    margin-left: calc(100% - 400px);
+    margin-right: auto;
+    margin-top: 100px;
+    background-color: #eeeeee;
+    width: 400px;
+    height: 400px;
+
+    box-shadow: #00000011 3px 3px 2px 2px;
+
+}
+

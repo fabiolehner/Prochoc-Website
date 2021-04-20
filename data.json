@@ -1,0 +1,33 @@
+{
+  "shop": [
+    {
+      "id": 1,
+      "productName": "ErdbeerSchokolade",
+      "title": "Fox t-shirt white",
+      "price": "$34,99",
+      "image": "product1"
+    },
+    {
+      "id": 2,
+      "productName": "HimbeerSchokolade",
+      "title": "Fox t-shirt black",
+      "price": "$34,99",
+      "image": "product2"
+    },
+    {
+      "id": 3,
+      "productName": "team-hoodie",
+      "title": "Fox hoodie beige",
+      "price": "$64,99",
+      "image": "product3"
+    }
+  ],
+  "cart": [
+    {
+      "id": "831480607",
+      "product": "undefined",
+      "amount": "1",
+      "size": "M"
+    }
+  ]
+}
