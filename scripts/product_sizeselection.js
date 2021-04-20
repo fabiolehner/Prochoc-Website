@@ -1,10 +1,3 @@
-/*
-    Purpose:    Retrieves data via POST request from the JSON server.
-
-    Author:     Kraus David, Lehner Fabio
-    Date:       27.05.2019
- */
-
 var size;
 var isInCart = false;
 
@@ -12,14 +5,14 @@ $(document).ready(function() {
 
     //Hide bag button
     var bagButton = $(".bag-button");
-    bagButton.hide();
+   /* bagButton.hide();
 
    $(".size-entry").click(function() {
         size = $(this).html();
         $("#size-dropdown").html(size);
         bagButton.fadeIn("slow");
         isInCart = false;
-    });
+    });*/
 
     bagButton.click(function() {
         if (!isInCart)

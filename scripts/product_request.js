@@ -20,7 +20,9 @@ request.onload = function () {
                //Apply values to components
                shopTitle.textContent = entry.title;
                productPrice.textContent = entry.price;
-               productImage.setAttribute("src", "../images/" + entry.image + "view.png");
+
+               //PRODUCT VIEW IMAGE (BESSERE QUALITÄT)
+               productImage.setAttribute("src", "../images/" + entry.image + ".png");
            }
         });
     } else console.log(`Could not connect to JSON-Server! Code: ` + request.status);
