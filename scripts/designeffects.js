@@ -1,5 +1,3 @@
-
-
 //Diese JS ist essentiell für den Hover Effect der Menu-Bar und den Übergang zur mobilen Dropdown menubar
 
 // Menu-toggle button

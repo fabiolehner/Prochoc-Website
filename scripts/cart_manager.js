@@ -1,4 +1,3 @@
-
 var isInBag = false;
 var productId;
 var productJSON;

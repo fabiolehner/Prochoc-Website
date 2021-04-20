@@ -1,4 +1,3 @@
-
 var showing = false;
 const productCardHeight = 140;
 var productCount;
