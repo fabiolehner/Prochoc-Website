@@ -7,9 +7,10 @@
     margin-top: 100px;
     background-color: #eeeeee;
     width: 400px;
-    height: 400px;
+    height: 100%;
 
     box-shadow: #00000011 3px 3px 2px 2px;
-
+    z-index: 100;
+    visibility: hidden; /* Initial visibility, modified by js later on */
 }
 

@@ -4,12 +4,12 @@ var productCount;
 
 $(document).ready(function() {
     const cartCard = document.getElementsByClassName("shopping-cart-card").item(0);
-    $(".shopping-cart-card").hide();
+    // $(".shopping-cart-card").hide();
     $("#cart").click(function(instance) {
         if (showing)
-            $(".shopping-cart-card").slideUp("fast");
+            $(".shopping-cart-card").css("visibility", "hidden");
         else {
-            $(".shopping-cart-card").slideDown("fast");
+            $(".shopping-cart-card").css("visibility", "visible");
 
             //Clear cart
             cartCard.innerHTML = "";
@@ -22,31 +22,31 @@ $(document).ready(function() {
 
             //Inflate card
             var request = new XMLHttpRequest();
-            request.open('GET', 'http://localhost:3000/cart', true);
+            request.open('GET', 'http://localhost:5000/api/prochoc/getBasket', true);
             request.onload = function () {
                 var data = JSON.parse(this.response);
                 if (request.status >= 200 && request.status < 400) {
                     data.forEach(entry => {
-
+                        console.log(entry);
                         //Create card for each entry
                         const productCard = document.createElement("div");
                         productCard.style.cssText = "background-color: #ddd; width: 370px; height: " + productCardHeight + "px; position: relative; border-radius: 3px; margin: 15px;";
 
                         //Parse product data
                         var request = new XMLHttpRequest();
-                        request.open('GET', 'http://localhost:3000/shop', true);
+                        request.open('GET', 'http://localhost:5000/api/prochoc/getProducts', true);
                         request.onload = function () {
                             var data = JSON.parse(this.response);
                             if (request.status >= 200 && request.status < 400) {
                                 data.forEach(product => {
-                                    if (product.productName === entry.product) {
+                                    if (product.id === entry.id) {
 
                                         const productTitle = document.createElement("h3");
                                         productTitle.setAttribute("style", "padding-top: 25px;padding-left: 25px;");
                                         productTitle.setAttribute("productId", entry.id);
                                         console.log(product.id);
                                         productTitle.setAttribute("class", "productTitle");
-                                        productTitle.innerHTML = product.title;
+                                        productTitle.innerHTML = product.name;
 
                                         const productPrice = document.createElement("p");
                                         productPrice.setAttribute("style", "padding-left: 25px;");
@@ -68,7 +68,7 @@ $(document).ready(function() {
                                         productCard.appendChild(removeProductButton);
                                         cartCard.appendChild(productCard);
                                         productCount++;
-                                        $(".shopping-cart-card").height(productCount * (30 + productCardHeight));
+                                        // $(".shopping-cart-card").height(productCount * (30 + productCardHeight));
                                     }
                                 });
                             } else console.log(`Could not connect to JSON-Server! Code: ` + request.status);

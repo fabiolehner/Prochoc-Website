@@ -1,14 +1,14 @@
 
-function getProductName() {
+function getProductId() {
     var search = location.search.substring(1);  //Skip ? in url
     var params = search.split("&");
-    var productName = undefined;
+    var productId = undefined;
     params.forEach(function(param) {
         if (param.includes("product=")) {
-            productName = param.substring(param.indexOf("=") + 1);
+            productId = param.substring(param.indexOf("=") + 1);
         }
     });
 
-    return productName;
+    return productId;
 }
 

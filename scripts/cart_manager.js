@@ -12,23 +12,24 @@ $(document).ready(function () {
 
 function addToBag() {
     var request = new XMLHttpRequest();
-    productId = Math.floor(Math.random() * 1000000000);
-    request.open('POST', 'http://localhost:3000/cart', true);
+    request.open('POST', 'http://localhost:5000/api/prochoc/addToBasket', true);
     request.setRequestHeader("Content-Type", "application/json");
     let size = $("#size-dropdown").html();
 
-    productJSON = "{\"id\": \"" + productId + "\", \"product\": \"" + getProductName() +
-        "\", \"amount\": \"" + 1 + "\", \"size\": \"" + size + "\"}";
+    var product = {
+        "productId": getProductId()
+    };
 
-    request.send(productJSON);
-    console.log('Added-Product to cart: ' + productJSON);
+    request.send(JSON.stringify(product));
+    console.log('Added-Product to cart: ' + product);
 }
 
 function removeIdFromBag(productId) {
     var request = new XMLHttpRequest();
-    request.open('DELETE', 'http://localhost:3000/cart/' + productId);
+    var requestBody = {"productId": productId};
+    request.open('POST', 'http://localhost:5000/api/prochoc/removeFromBasket', true);
     request.setRequestHeader("Content-Type", "application/json");
-    request.send();
+    request.send(JSON.stringify(requestBody));
     console.log('Removed product from cart.');
 }
 

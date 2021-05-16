@@ -3,7 +3,7 @@ const container = document.getElementById("container");
 const productPage = "../product_pages/product.html";
 
 const request = new XMLHttpRequest();
-request.open('GET', 'http://localhost:3000/shop', true);
+request.open('GET', 'http://localhost:5000/api/prochoc/getProducts', true);
 
 request.onload = function () {
 
@@ -19,7 +19,7 @@ request.onload = function () {
             }
             const card = document.createElement("div");
             const link = document.createElement("a");
-            link.setAttribute("href", productPage + "?product=" + entry.productName);
+            link.setAttribute("href", productPage + "?product=" + entry.id);
             card.setAttribute("id", position);
             card.setAttribute("class", "product");
 
@@ -27,8 +27,8 @@ request.onload = function () {
             const title = document.createElement("p");
             const price = document.createElement("p");
 
-            image.setAttribute("src", "../images/" + entry.image + ".png");
-            title.textContent = entry.title;
+            image.setAttribute("src", "../images/product1.png");
+            title.textContent = entry.name;
             price.textContent = entry.price;
 
             link.appendChild(image);
