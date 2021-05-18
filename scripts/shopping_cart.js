@@ -4,6 +4,7 @@ var productCount;
 
 $(document).ready(function() {
     const cartCard = document.getElementsByClassName("shopping-cart-card").item(0);
+    
     // $(".shopping-cart-card").hide();
     $("#cart").click(function(instance) {
         if (showing)
@@ -77,7 +78,14 @@ $(document).ready(function() {
                     });
                 } else console.log(`Could not connect to JSON-Server! Code: ` + request.status);
             };
+
             request.send();
+            var center = document.createElement("center");
+            var checkoutButton = document.createElement("a");
+            checkoutButton.innerHTML = "Checkout";
+            checkoutButton.setAttribute("href", "checkout.html");
+            center.appendChild(checkoutButton);
+            cartCard.appendChild(center);
         }
         showing = !showing;
     });

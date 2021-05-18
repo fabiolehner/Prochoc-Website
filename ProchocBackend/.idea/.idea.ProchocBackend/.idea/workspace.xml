@@ -4,21 +4,31 @@
     <projectFile>ProchocBackend/ProchocBackend.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c2deedf4-70c7-4e33-9507-b51f19923c34" name="Default Changelist" comment="" />
+    <list default="true" id="c2deedf4-70c7-4e33-9507-b51f19923c34" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../data.json" beforeDir="false" afterPath="$PROJECT_DIR$/../data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html_css/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html_css/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html_css/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/shop.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../html_css/shopping_cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/shopping_cart.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product_pages/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/../product_pages/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../product_pages/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../product_pages/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/cart_manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/cart_manager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/product_request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/product_request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/productpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/productpage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/shop_request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/shop_request.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/shopping_cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/shopping_cart.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/687CD3EF-1206-406C-8B82-2CB02EE0595E/1/ConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/FF8A735A-7E69-45FC-AB62-FA0C4B39A5AC/38/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../quotexchange-exam-DalexKraus/Start/Startup.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../quotexchange-exam-DalexKraus/Start/Data/User.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../quotexchange-exam-DalexKraus/Start/Data/QuotexchangeDataContext.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../quotexchange-exam-DalexKraus/Start/Data/DemoDataGenerator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../quotexchange-exam-DalexKraus/Start/Controllers/QuotesController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/../quotexchange-exam-DalexKraus/Start/Data/Quote.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -34,12 +44,13 @@
     </changedPaths>
   </component>
   <component name="ProjectId" id="1sZrP2pzuU8XA3XS2ChLVPTdsgC" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.35005066" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -88,6 +99,7 @@
       <updated>1621090926501</updated>
       <workItem from="1621090934026" duration="3332000" />
       <workItem from="1621175882586" duration="8306000" />
+      <workItem from="1621280448304" duration="1645000" />
     </task>
     <servers />
   </component>
@@ -104,7 +116,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ProchocBackend/Controllers/APIController.cs</url>
-          <line>60</line>
+          <line>84</line>
           <properties documentPath="C:\Users\David\Downloads\ProchocBackend\ProchocBackend\Controllers\APIController.cs" initialLine="60" containingFunctionPresentation="method 'RemoveFromBasket'">
             <startOffsets>
               <option value="2036" />

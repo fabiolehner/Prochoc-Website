@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,8 +15,32 @@ namespace ProchocBackend.Controllers
         
         private readonly ProchocDbContext _db;
         public APIController(ProchocDbContext context)
-        {
+        { 
             _db = context;
+            CreateDefaultProduct(new Product()
+            {
+                Name = "PROCHOC Erdbeere",
+                Price = "4,99€"
+            });
+            CreateDefaultProduct(new Product()
+            {
+                Name = "PROCHOC Himbeere",
+                Price = "4,99€"
+            });
+            CreateDefaultProduct(new Product()
+            {
+                Name = "PROCHOC Blaubeere",
+                Price = "4,99€"
+            });
+        }
+
+        private void CreateDefaultProduct(Product product)
+        {
+            if (!_db.Products.Any(x => x.Name == product.Name))
+            {
+                _db.Products.Add(product);
+                _db.SaveChanges();
+            }
         }
 
         [HttpGet]
