@@ -40,7 +40,7 @@ $(document).ready(function() {
 
                                 const productPrice = document.createElement("p");
                                 productPrice.setAttribute("style", "padding-left: 25px;");
-                                productPrice.innerHTML = product.price;
+                                productPrice.innerHTML = product.price+"€";
 
                                 //Remove button
                                 const removeProductButton = document.createElement("button");

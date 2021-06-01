@@ -14,14 +14,15 @@ function addToBag() {
     var request = new XMLHttpRequest();
     request.open('POST', 'http://localhost:5000/api/prochoc/addToBasket', true);
     request.setRequestHeader("Content-Type", "application/json");
-    let size = $("#size-dropdown").html();
 
     var product = {
-        "productId": getProductId()
+        "customerId": "" + getUserId(),
+        "productId": getProductId(),
+        "amount": document.getElementById('spinner').value
     };
 
     request.send(JSON.stringify(product));
-    console.log('Added-Product to cart: ' + product);
+    console.log('Added-Product to cart: ' + JSON.stringify(product));
 }
 
 function removeIdFromBag(productId) {

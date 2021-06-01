@@ -15,8 +15,9 @@ request.onload = function () {
                shopTitle.textContent = entry.name;
                productPrice.textContent = entry.price;
 
+
                //PRODUCT VIEW IMAGE (BESSERE QUALITÄT)
-               productImage.setAttribute("src", "../images/product1.png");
+               productImage.setAttribute("src", "../images/" + entry.picture);
            }
         });
     } else console.log(`Could not connect to JSON-Server! Code: ` + request.status);

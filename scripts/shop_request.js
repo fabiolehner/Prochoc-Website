@@ -26,10 +26,11 @@ request.onload = function () {
             const image = document.createElement("img");
             const title = document.createElement("p");
             const price = document.createElement("p");
+            const amount = document.createElement("p");
 
-            image.setAttribute("src", "../images/product1.png");
+            image.setAttribute("src", "../images/"+entry.picture);
             title.textContent = entry.name;
-            price.textContent = entry.price;
+            price.textContent = entry.price+"€";
 
             link.appendChild(image);
             link.appendChild(title);

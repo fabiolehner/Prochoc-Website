@@ -5,18 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c2deedf4-70c7-4e33-9507-b51f19923c34" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../data.json" beforeDir="false" afterPath="$PROJECT_DIR$/../data.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html_css/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html_css/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html_css/shop.html" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/shop.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../html_css/shopping_cart.css" beforeDir="false" afterPath="$PROJECT_DIR$/../html_css/shopping_cart.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product_pages/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/../product_pages/product.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../product_pages/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/../product_pages/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProchocBackend/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProchocBackend/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ProchocBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ProchocBackend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Controllers/APIController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/Controllers/APIController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Database/Basket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/Database/Basket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Database/BasketProduct.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/Database/BasketProduct.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Database/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/Database/Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Database/ProchocDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/Database/ProchocDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Database/Product.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/Database/Product.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Migrations/20210527195318_first.Designer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Migrations/20210527195318_first.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/ProchocBackend.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/ProchocBackend.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.runtimeconfig.dev.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ProchocBackend.runtimeconfig.dev.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ref/ProchocBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/bin/Debug/net5.0/ref/ProchocBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ProchocBackend.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ref/ProchocBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/Debug/net5.0/ref/ProchocBackend.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/ProchocBackend.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/ProchocBackend.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/ProchocBackend.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/ProchocBackend.csproj.nuget.g.props" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProchocBackend/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ProchocBackend/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/cart_manager.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/cart_manager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/product_request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/product_request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/productpage.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/productpage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/shop_request.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/shop_request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../scripts/shopping_cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/shopping_cart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,20 +46,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/687CD3EF-1206-406C-8B82-2CB02EE0595E/1/ConfigurationExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/647FAEDF-A0C0-4C01-B79E-04471FFD80DF/233/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/FF8A735A-7E69-45FC-AB62-FA0C4B39A5AC/38/ControllerBase.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
       <option value="$PROJECT_DIR$/ProchocBackend/Database/User.cs" />
       <option value="$PROJECT_DIR$/ProchocBackend/Database/DbContext.cs" />
-      <option value="$PROJECT_DIR$/ProchocBackend/Database/ProchocDbContext.cs" />
       <option value="$PROJECT_DIR$/ProchocBackend/Properties/launchSettings.json" />
-      <option value="$PROJECT_DIR$/ProchocBackend/appsettings.json" />
-      <option value="$PROJECT_DIR$/ProchocBackend/Database/Product.cs" />
-      <option value="$PROJECT_DIR$/ProchocBackend/Database/Basket.cs" />
       <option value="$PROJECT_DIR$/ProchocBackend/Startup.cs" />
+      <option value="$PROJECT_DIR$/ProchocBackend/appsettings.json" />
+      <option value="$PROJECT_DIR$/ProchocBackend/Database/ProchocDbContext.cs" />
+      <option value="$PROJECT_DIR$/ProchocBackend/Database/Customer.cs" />
+      <option value="$PROJECT_DIR$/ProchocBackend/Database/Basket.cs" />
+      <option value="$PROJECT_DIR$/ProchocBackend/Database/Product.cs" />
+      <option value="$PROJECT_DIR$/ProchocBackend/Database/BasketProduct.cs" />
       <option value="$PROJECT_DIR$/ProchocBackend/Controllers/APIController.cs" />
     </changedPaths>
   </component>
@@ -50,6 +81,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34994584" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -100,6 +132,7 @@
       <workItem from="1621090934026" duration="3332000" />
       <workItem from="1621175882586" duration="8306000" />
       <workItem from="1621280448304" duration="1645000" />
+      <workItem from="1622496074709" duration="6053000" />
     </task>
     <servers />
   </component>
@@ -108,6 +141,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
@@ -116,21 +160,35 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/ProchocBackend/Controllers/APIController.cs</url>
-          <line>84</line>
-          <properties documentPath="C:\Users\David\Downloads\ProchocBackend\ProchocBackend\Controllers\APIController.cs" initialLine="60" containingFunctionPresentation="method 'RemoveFromBasket'">
+          <line>110</line>
+          <properties documentPath="C:\Users\David\Downloads\a\Prochoc-Website\ProchocBackend\ProchocBackend\Controllers\APIController.cs" initialLine="108" containingFunctionPresentation="method 'AddToBasket'">
             <startOffsets>
-              <option value="2036" />
+              <option value="3644" />
             </startOffsets>
             <endOffsets>
-              <option value="2048" />
+              <option value="3656" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="15" />
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/ProchocBackend/Controllers/APIController.cs</url>
+          <line>100</line>
+          <properties documentPath="C:\Users\David\Downloads\a\Prochoc-Website\ProchocBackend\ProchocBackend\Controllers\APIController.cs" initialLine="98" containingFunctionPresentation="method 'AddToBasket'">
+            <startOffsets>
+              <option value="3213" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3233" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="Type#ProchocBackend.Database.Basket" memberName="ProductEntries" />
         <PinnedItemInfo parentTag="Type#ProchocBackend.Database.Basket" memberName="Products" />
         <PinnedItemInfo parentTag="Type#ProchocBackend.Database.Basket" memberName="Id" />
       </pinned-members>

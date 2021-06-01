@@ -324,7 +324,7 @@ a{
 
 
 
-.bag-button{
+.bag-button {
     background-color: white;
     text-align: center;
     width: 140px;
@@ -337,6 +337,12 @@ a{
     margin-top: 10px;
     margin-left: 145px;
 }
+#spinner {
+    width: 140px;
+    margin-top: 10px;
+    margin-left: 145px;
+}
+
 
 .bag-button:hover{
     background-color: #ddd;
