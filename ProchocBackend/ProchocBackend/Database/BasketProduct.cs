@@ -8,7 +8,6 @@ namespace ProchocBackend.Database
         [Key]
         public int Id { get; set; }
         
-        [NotNull]
         public Basket Basket { get; set; }
         
         [NotNull]

@@ -23,7 +23,11 @@ $(document).ready(function() {
 
             //Inflate card
             var request = new XMLHttpRequest();
-            request.open('GET', 'http://localhost:5000/api/prochoc/getBasket', true);
+            var body = {
+                "customerId": "" + getUserId()
+            }
+            request.open('POST', 'http://localhost:5000/api/prochoc/getBasket', true);
+            request.send(JSON.stringify(body));
             request.onload = function () {
                 var data = JSON.parse(this.response);
                 if (request.status >= 200 && request.status < 400) {
@@ -40,11 +44,11 @@ $(document).ready(function() {
                             var data = JSON.parse(this.response);
                             if (request.status >= 200 && request.status < 400) {
                                 data.forEach(product => {
-                                    if (product.id === entry.id) {
+                                    if (product.id === entry.product.id) {
 
                                         const productTitle = document.createElement("h3");
                                         productTitle.setAttribute("style", "padding-top: 25px;padding-left: 25px;");
-                                        productTitle.setAttribute("productId", entry.id);
+                                        productTitle.setAttribute("productId", entry.product.id);
                                         console.log(product.id);
                                         productTitle.setAttribute("class", "productTitle");
                                         productTitle.innerHTML = product.name;

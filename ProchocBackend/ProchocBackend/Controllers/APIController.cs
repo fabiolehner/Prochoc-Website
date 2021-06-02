@@ -108,6 +108,7 @@ namespace ProchocBackend.Controllers
                 Product = product
             });
             _db.Baskets.Update(basket);
+            _db.SaveChanges();
             return Ok();
         }
 
@@ -123,11 +124,14 @@ namespace ProchocBackend.Controllers
             return Ok();
         }
         
-        [HttpGet]
+        public record GetBasketModel(string CustomerId);
+
+        [HttpPost]
         [Route("getBasket")]
-        public IEnumerable GetBasket()
+        public IEnumerable GetBasket([FromBody] GetBasketModel model)
         {
-            return _basket;
+            var basket = _db.Baskets.First(b => b.Customer.CustomerId.ToString() == model.CustomerId);
+            return basket.ProductEntries;
         }
     }
 }

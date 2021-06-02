@@ -15,8 +15,6 @@ request.onload = function () {
                shopTitle.textContent = entry.name;
                productPrice.textContent = entry.price;
 
-
-               //PRODUCT VIEW IMAGE (BESSERE QUALITÄT)
                productImage.setAttribute("src", "../images/" + entry.picture);
            }
         });

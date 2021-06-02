@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProchocBackend", "ProchocBackend\ProchocBackend.csproj", "{FC8883A3-9629-4254-930A-84FF1F47D47A}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31213.239
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProchocBackend", "ProchocBackend\ProchocBackend.csproj", "{33494090-08C5-423E-B567-9DDD7A884577}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FC8883A3-9629-4254-930A-84FF1F47D47A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FC8883A3-9629-4254-930A-84FF1F47D47A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FC8883A3-9629-4254-930A-84FF1F47D47A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FC8883A3-9629-4254-930A-84FF1F47D47A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33494090-08C5-423E-B567-9DDD7A884577}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33494090-08C5-423E-B567-9DDD7A884577}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33494090-08C5-423E-B567-9DDD7A884577}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33494090-08C5-423E-B567-9DDD7A884577}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {259D018E-C889-4A98-9FC8-3D2A1A928C0D}
 	EndGlobalSection
 EndGlobal

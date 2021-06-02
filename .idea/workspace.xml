@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e107238b-5d13-45b4-9496-87b7054102f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/html_css/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/html_css/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html_css/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/html_css/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/html_css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/html_css/style.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -15,7 +16,26 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/html_css/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="92" column="66" selection-start-line="92" selection-start-column="66" selection-end-line="92" selection-end-column="66" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html_css/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="586">
+              <caret line="174" column="24" selection-start-line="174" selection-start-column="24" selection-end-line="174" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -41,15 +61,15 @@
         <option value="$PROJECT_DIR$/HTML &amp; CSS/about.html" />
         <option value="$PROJECT_DIR$/scripts/data.json" />
         <option value="$PROJECT_DIR$/scripts/product_sizeselection.js" />
+        <option value="$PROJECT_DIR$/html_css/about.html" />
         <option value="$PROJECT_DIR$/product_pages/product.html" />
         <option value="$PROJECT_DIR$/html_css/shop.html" />
         <option value="$PROJECT_DIR$/scripts/cart_manager.js" />
         <option value="$PROJECT_DIR$/scripts/designeffects.js" />
         <option value="$PROJECT_DIR$/scripts/product_request.js" />
         <option value="$PROJECT_DIR$/scripts/shopping_cart.js" />
-        <option value="$PROJECT_DIR$/html_css/index.html" />
-        <option value="$PROJECT_DIR$/html_css/about.html" />
         <option value="$PROJECT_DIR$/html_css/style.css" />
+        <option value="$PROJECT_DIR$/html_css/index.html" />
       </list>
     </option>
   </component>
@@ -128,15 +148,16 @@
       <updated>1617628437635</updated>
       <workItem from="1617628440787" duration="3592000" />
       <workItem from="1618871917084" duration="5473000" />
-      <workItem from="1622106354022" duration="7077000" />
+      <workItem from="1622106354022" duration="6254000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16142000" />
+    <option name="totallyTimeSpent" value="15319000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25933757" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -236,6 +257,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/html_css/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-588">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/html_css/shop.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -243,24 +271,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html_css/about.html">
+    <entry file="file://$PROJECT_DIR$/html_css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="586">
+          <caret line="174" column="24" selection-start-line="174" selection-start-column="24" selection-end-line="174" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/html_css/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
+        <state relative-caret-position="374">
           <caret line="92" column="66" selection-start-line="92" selection-start-column="66" selection-end-line="92" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/html_css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>
