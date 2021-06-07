@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DxDmfqO3peuBSFfSnIXM7bl8WRmbAnqA0fE46hCwHgzqXdOS/vekJxd3W+oa0EXfbWoWfoXf3bh6OPJJxmQiiQ==",
+  "dgSpecHash": "9/zcd+2yBi10CKXh1WfOl/Oep6XQU26r/GsZEO3k0QOu0T7Omqidof/gLyS4mNMk8WcYeZ56BvYZ1GWtpBa27w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\basti\\Desktop\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj",
+  "projectFilePath": "C:\\Users\\basti\\Desktop\\HTL-Leonding\\C#\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\basti\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\basti\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",

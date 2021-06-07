@@ -9,8 +9,8 @@ using ProchocBackend.Database;
 namespace ProchocBackend.Migrations
 {
     [DbContext(typeof(ProchocDbContext))]
-    [Migration("20210602074043_second")]
-    partial class second
+    [Migration("20210605113329_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

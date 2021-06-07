@@ -11,8 +11,6 @@ namespace ProchocBackend.Controllers
     [Route("api/prochoc")]
     public class APIController : ControllerBase
     {
-        private static List<Product> _basket = new();
-        
         private readonly ProchocDbContext _db;
         public APIController(ProchocDbContext context)
         { 
@@ -66,8 +64,7 @@ namespace ProchocBackend.Controllers
                 
                 _db.Baskets.Add(new Basket()
                 {
-                    Customer = customer,
-                    ProductEntries = new List<BasketProduct>()
+                    Customer = customer
                 });
                 _db.SaveChanges();
             }
@@ -100,15 +97,19 @@ namespace ProchocBackend.Controllers
             var amount = int.Parse(requestModel.Amount);
             if (product == null) return NotFound(); // Invalid or unavailable product given
 
-            var basket = _db.Baskets.First(b => b.Customer.CustomerId.ToString() == requestModel.CustomerId);
-            basket.ProductEntries.Add(new BasketProduct()
+            var basket = await _db.Baskets.Where(b => b.Customer.CustomerId.ToString() == requestModel.CustomerId)
+                .Include(b => b.Customer)
+                .FirstOrDefaultAsync();
+            
+            var newEntry = new BasketProduct()
             {
                 Amount = amount,
                 Basket = basket,
                 Product = product
-            });
-            _db.Baskets.Update(basket);
-            _db.SaveChanges();
+            };
+            await _db.BasketProducts.AddAsync(newEntry);
+            await _db.SaveChangesAsync();
+            
             return Ok();
         }
 
@@ -116,11 +117,19 @@ namespace ProchocBackend.Controllers
         [Route("removeFromBasket")]
         public async Task<ActionResult> RemoveFromBasket([FromBody] BasketRequestModel requestModel)
         {
-            // Find product
-            var product = await _db.Products.FirstOrDefaultAsync(x => x.Id.ToString() == requestModel.ProductId);
-            if (product == null) return NotFound(); // Invalid or unavailable product given
+            var basketProduct = _db.BasketProducts
+                .Where(bp => bp.Basket.Customer.CustomerId.ToString() == requestModel.CustomerId)
+                .Where(bp => bp.Amount.ToString() == requestModel.Amount)
+                .Where(bp => bp.Product.Id.ToString() == requestModel.ProductId)
+                .Include(bp => bp.Basket)
+                .Include(bp => bp.Basket.Customer)
+                .Include(bp => bp.Product)
+                .ToList()
+                .FirstOrDefault();
 
-            _basket = _basket.Where(x => x.Id.ToString() != requestModel.ProductId).ToList();
+            if (basketProduct == null) return NotFound();
+            _db.BasketProducts.Remove(basketProduct);
+            await _db.SaveChangesAsync();
             return Ok();
         }
         
@@ -130,8 +139,18 @@ namespace ProchocBackend.Controllers
         [Route("getBasket")]
         public IEnumerable GetBasket([FromBody] GetBasketModel model)
         {
-            var basket = _db.Baskets.First(b => b.Customer.CustomerId.ToString() == model.CustomerId);
-            return basket.ProductEntries;
+            var basketProduct = _db.BasketProducts
+                .Where(bp => bp.Basket.Customer.CustomerId.ToString() == model.CustomerId)
+                .Include(bp => bp.Basket)
+                .Include(bp => bp.Basket.Customer)
+                .Include(bp => bp.Product)
+                .ToList();
+
+            return basketProduct.Select(bp => new
+            {
+                Amount = bp.Amount,
+                Product = bp.Product
+            });
         }
     }
 }

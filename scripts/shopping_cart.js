@@ -27,7 +27,7 @@ $(document).ready(function() {
                 "customerId": "" + getUserId()
             }
             request.open('POST', 'http://localhost:5000/api/prochoc/getBasket', true);
-            request.send(JSON.stringify(body));
+            request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
             request.onload = function () {
                 var data = JSON.parse(this.response);
                 if (request.status >= 200 && request.status < 400) {
@@ -51,7 +51,8 @@ $(document).ready(function() {
                                         productTitle.setAttribute("productId", entry.product.id);
                                         console.log(product.id);
                                         productTitle.setAttribute("class", "productTitle");
-                                        productTitle.innerHTML = product.name;
+                                        productTitle.setAttribute("amount", entry.amount);
+                                        productTitle.innerHTML = + entry.amount + "x" + " - " + product.name; 
 
                                         const productPrice = document.createElement("p");
                                         productPrice.setAttribute("style", "padding-left: 25px;");
@@ -63,8 +64,9 @@ $(document).ready(function() {
                                         removeProductButton.innerHTML = "Remove from cart";
                                         removeProductButton.onclick = function() {
                                             var id = removeProductButton.parentElement.getElementsByClassName("productTitle").item(0).getAttribute("productId");
+                                            var amount = removeProductButton.parentElement.getElementsByClassName("productTitle").item(0).getAttribute("amount");
                                             console.log("id: " + id);
-                                            removeIdFromBag(id);
+                                            removeIdFromBag(id, amount);
                                             removeProductButton.parentElement.remove();
                                         };
 
@@ -82,8 +84,8 @@ $(document).ready(function() {
                     });
                 } else console.log(`Could not connect to JSON-Server! Code: ` + request.status);
             };
+            request.send(JSON.stringify(body));
 
-            request.send();
             var center = document.createElement("center");
             var checkoutButton = document.createElement("a");
             checkoutButton.innerHTML = "Checkout";

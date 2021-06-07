@@ -1,6 +1,5 @@
 var isInBag = false;
-var productId;
-var productJSON;
+var amount;
 
 $(document).ready(function () {
     $("#bag-button").click(function () {
@@ -15,19 +14,26 @@ function addToBag() {
     request.open('POST', 'http://localhost:5000/api/prochoc/addToBasket', true);
     request.setRequestHeader("Content-Type", "application/json");
 
+    amount = document.getElementById('spinner').value;
     var product = {
         "customerId": "" + getUserId(),
         "productId": getProductId(),
-        "amount": document.getElementById('spinner').value
+        "amount": amount
     };
+
 
     request.send(JSON.stringify(product));
     console.log('Added-Product to cart: ' + JSON.stringify(product));
 }
 
-function removeIdFromBag(productId) {
+function removeIdFromBag(productId, amount) {
     var request = new XMLHttpRequest();
-    var requestBody = {"productId": productId};
+    var requestBody = {
+        "productId": productId,
+        "customerId": "" + getUserId(),
+        "amount": "" + amount
+    };
+
     request.open('POST', 'http://localhost:5000/api/prochoc/removeFromBasket', true);
     request.setRequestHeader("Content-Type", "application/json");
     request.send(JSON.stringify(requestBody));
@@ -35,5 +41,5 @@ function removeIdFromBag(productId) {
 }
 
 function removeFromBag() {
-    removeIdFromBag(productId);
+    removeIdFromBag(getProductId(), amount);
 }

@@ -54,7 +54,7 @@ namespace ProchocBackend.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BasketProduct");
+                    b.ToTable("BasketProducts");
                 });
 
             modelBuilder.Entity("ProchocBackend.Database.Customer", b =>
@@ -109,7 +109,7 @@ namespace ProchocBackend.Migrations
             modelBuilder.Entity("ProchocBackend.Database.BasketProduct", b =>
                 {
                     b.HasOne("ProchocBackend.Database.Basket", "Basket")
-                        .WithMany("ProductEntries")
+                        .WithMany()
                         .HasForeignKey("BasketId");
 
                     b.HasOne("ProchocBackend.Database.Product", "Product")
@@ -119,11 +119,6 @@ namespace ProchocBackend.Migrations
                     b.Navigation("Basket");
 
                     b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ProchocBackend.Database.Basket", b =>
-                {
-                    b.Navigation("ProductEntries");
                 });
 #pragma warning restore 612, 618
         }
