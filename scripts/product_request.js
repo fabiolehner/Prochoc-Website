@@ -1,24 +1,28 @@
-//Get product title (h1) and product price (p)
-const shopTitle = document.getElementById("product_title");
-const productPrice = document.getElementById("product_price");
-const productImage = document.getElementById("product-image");
 
-var request = new XMLHttpRequest();
-request.open('GET', 'http://localhost:5000/api/prochoc/getProducts', true);
-request.onload = function () {
-    var data = JSON.parse(this.response);
-    if (request.status >= 200 && request.status < 400) {
-        data.forEach(entry => {
-            //Check if product names match (URL and the one from the result of the request)
-           if (entry.id === getProductId()) {
-               //Apply values to components
-               shopTitle.textContent = entry.name;
-               productPrice.textContent = entry.price;
+$(document).ready(function() {
+    //Get product title (h1) and product price (p)
+    const shopTitle = document.getElementById("product_title");
+    const productPrice = document.getElementById("product_price");
+    const productImage = document.getElementById("product_image");
 
-               productImage.setAttribute("src", "../images/" + entry.picture);
-           }
-        });
-    } else console.log(`Could not connect to JSON-Server! Code: ` + request.status);
-};
+    var request = new XMLHttpRequest();
+    request.open('GET', 'http://localhost:5000/api/prochoc/getProducts', true);
+    request.onload = function () {
+        var data = JSON.parse(this.response);
+        if (request.status >= 200 && request.status < 400) {
+            data.forEach(entry => {
+                if ("" + entry.id === "" + getProductId()) {
+                    //Apply values to components
+                    shopTitle.textContent = entry.name;
+                    productPrice.textContent = entry.price;
 
-request.send();
+                    if (("" + entry.picture).startsWith("https://"))
+                    productImage.setAttribute("src", entry.picture);
+                    else productImage.setAttribute("src", "../images/" + entry.picture);
+                }
+            });
+        } else console.log(`Could not connect to JSON-Server! Code: ` + request.status);
+    };
+
+    request.send();
+});
