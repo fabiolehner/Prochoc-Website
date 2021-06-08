@@ -1,4 +1,10 @@
 
+$(document).ready(function() {
+    var button = document.getElementById("edit").onclick = function() {
+        localStorage.setItem("currentProduct", JSON.stringify(currentProduct));
+    };
+});
+
 function getProductId() {
     var search = location.search.substring(1);  //Skip ? in url
     var params = search.split("&");
@@ -13,16 +19,14 @@ function getProductId() {
 }
 
 function getUserId() {
-    var search = location.search.substring(1);  //Skip ? in url
-    var params = search.split("&");
-    var productId = undefined;
-    params.forEach(function(param) {
-        if (param.includes("user=")) {
-            productId = param.substring(param.indexOf("=") + 1);
-        }
-    });
+    var user = localStorage.getItem("currentUser");
+    if (user == undefined)
+    {
+        user = 0;
+        localStorage.setItem("currentUser", user);
+    }
 
-    return productId;
+    return user;
 }
 console.log(getUserId());
 

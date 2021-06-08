@@ -86,6 +86,20 @@ namespace ProchocBackend.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("editProduct")]
+        public async Task<ActionResult> EditProduct([FromBody] Product product)
+        {
+            var entry = await _db.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
+            entry.Name = product.Name;
+            entry.Picture = product.Picture;
+            entry.Price = product.Price;
+
+            _db.Products.Update(entry);
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
+
         public record BasketRequestModel(string CustomerId, string ProductId, string Amount);
         
         [HttpPost]

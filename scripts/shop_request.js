@@ -28,7 +28,11 @@ request.onload = function () {
             const price = document.createElement("p");
             const amount = document.createElement("p");
 
-            image.setAttribute("src", "../images/"+entry.picture);
+            if (("" + entry.picture).startsWith("https://"))
+            image.setAttribute("src", entry.picture);
+            else image.setAttribute("src", "../images/" + entry.picture);
+            
+
             title.textContent = entry.name;
             price.textContent = entry.price+"€";
 

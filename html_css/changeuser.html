@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Change User</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    </head>
+    <body>
+
+        <center>
+            <h1>Change User</h1>
+            <select name="users" id="users">
+                <option value="1">Benutzer 1</option>
+                <option value="2">Benutzer 2</option>
+            </select>
+            <br>
+            <br>
+            <button id="change">Benutzer wechseln</button>
+        </center>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var changeButton = document.getElementById("change");
+                changeButton.onclick = function()
+                {
+                    var user = document.getElementById("users").value;
+                    localStorage.setItem("currentUser", user);
+                    alert("Benutzer gewechselt!");
+                };
+            });
+        </script>
+    </body>
+</html>

@@ -1,29 +1,20 @@
 <!DOCTYPE HTML>
 <html>
-<head>
-<script>
-function allowDrop(ev) {
-  ev.preventDefault();
-}
+    <head>
+        <title>Add Product</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    </head>
+    <body>
 
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
+        <center>
+            <h1>Add Product</h1>
+            <input id="prodname" type="text" placeholder="Produkname"><br>
+            <input id="prodprice" type="text" placeholder="Produktpreis"><br>
+            <input id="prodimg" type="text" placeholder="Produktbild"><br><br>
+            <button id="addProduct">Produkt hinzufügen</button>
+        </center>
 
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-}
-</script>
-</head>
-<body>
-
-<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-
-<img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
-
-</body>
-<input type="text" placeholder="Produkname">
-<input type="text" placeholder="Produktpreis">
+        <script type="text/javascript" src="../scripts/add_product.js"></script>
+    </body>
 </html>
