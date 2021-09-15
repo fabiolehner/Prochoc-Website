@@ -3,6 +3,16 @@ $(document).ready(function() {
     var button = document.getElementById("edit").onclick = function() {
         localStorage.setItem("currentProduct", JSON.stringify(currentProduct));
     };
+    var button = document.getElementById("delete").onclick = function() {
+        var request = new XMLHttpRequest();
+        request.open('POST', 'http://localhost:5000/api/prochoc/removeProduct', true);
+        request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        request.onload = function() {
+
+            alert("Product wurde gelöscht!");
+        };
+        request.send(JSON.stringify(currentProduct));
+    };
 });
 
 function getProductId() {

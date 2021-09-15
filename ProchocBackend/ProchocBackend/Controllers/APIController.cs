@@ -100,6 +100,22 @@ namespace ProchocBackend.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("removeProduct")]
+        public async Task<ActionResult> RemoveProduct([FromBody] Product product)
+        {
+            var entry = await _db.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
+            var toRemove = await _db.BasketProducts.Where(bp => bp.Product.Id == product.Id)
+                .Include(bp => bp.Product).Include(bp => bp.Basket).ToListAsync();
+
+            foreach (var bp in toRemove)
+                _db.BasketProducts.Remove(bp);
+
+            _db.Products.Remove(entry);
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
+
         public record BasketRequestModel(string CustomerId, string ProductId, string Amount);
         
         [HttpPost]
