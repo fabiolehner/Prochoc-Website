@@ -27,6 +27,12 @@ p{
 }
 
 
+#edit{
+    margin-left: 173px;
+}
+#delete{
+    margin-left: 165px;
+}
 
 .content {
     width: 100%;

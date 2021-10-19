@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\David\\Downloads\\a\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj": {}
+    "C:\\Users\\basti\\Desktop\\HTL-Leonding\\4CHIF\\C#\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\David\\Downloads\\a\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj": {
+    "C:\\Users\\basti\\Desktop\\HTL-Leonding\\4CHIF\\C#\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\David\\Downloads\\a\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj",
+        "projectUniqueName": "C:\\Users\\basti\\Desktop\\HTL-Leonding\\4CHIF\\C#\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj",
         "projectName": "ProchocBackend",
-        "projectPath": "C:\\Users\\David\\Downloads\\a\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj",
-        "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\David\\Downloads\\a\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\obj\\",
+        "projectPath": "C:\\Users\\basti\\Desktop\\HTL-Leonding\\4CHIF\\C#\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\ProchocBackend.csproj",
+        "packagesPath": "C:\\Users\\basti\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\basti\\Desktop\\HTL-Leonding\\4CHIF\\C#\\Prochoc-Website\\ProchocBackend\\ProchocBackend\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\basti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,15 +49,23 @@
               "target": "Package",
               "version": "[2.2.0, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.10, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.10, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             }
           },
           "imports": [
@@ -65,6 +78,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.9, 5.0.9]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -73,7 +92,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200-preview.20614.14\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
         }
       }
     }

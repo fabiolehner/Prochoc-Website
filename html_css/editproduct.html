@@ -2,19 +2,24 @@
 <html>
     <head>
         <title>Edit Product</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="addProductStyle.css">
         <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     </head>
     <body>
-
-        <center>
+        <div id="Login">
             <h1>Edit Product</h1>
-            <input id="prodname" type="text" placeholder="Produkname"><br>
-            <input id="prodprice" type="text" placeholder="Produktpreis"><br>
-            <input id="prodimg" type="text" placeholder="Produktbild"><br><br>
-            <button id="editProduct">Produkt Übernehmen</button>
-        </center>
-
+            <div id="inner">
+                    <p>Title</p>
+                    <input id="prodname" type="text" autocomplete="off" autofocus>
+                    <p>Price</p>
+                    <input id="prodprice" type="text" autocomplete="off">
+                    <p>Image Link</p>
+                    <input id="prodimg" type="text" autocomplete="off">
+                    
+                    <button id="editProduct">EDIT</button>
+            </div>                       
+        </div>
+      
         <script type="text/javascript">
             var editingProduct;
             $(document).ready(function () {
