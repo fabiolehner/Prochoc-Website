@@ -12,10 +12,13 @@ namespace ProchocBackend.Database
     {
         [Key]
         public int AdminId { get; set; }
+
         [NotNull]
         public string Email { get; set; }
 
         [NotNull]
         public string Password { get; set; }
+
+        public Product Product { get; set; }
     }
 }

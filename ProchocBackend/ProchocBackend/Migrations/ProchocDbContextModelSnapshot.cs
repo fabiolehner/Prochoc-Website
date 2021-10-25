@@ -15,7 +15,29 @@ namespace ProchocBackend.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.6");
+                .HasAnnotation("ProductVersion", "5.0.10");
+
+            modelBuilder.Entity("ProchocBackend.Database.Admin", b =>
+                {
+                    b.Property<int>("AdminId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("longtext");
+
+                    b.Property<int?>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AdminId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Admins");
+                });
 
             modelBuilder.Entity("ProchocBackend.Database.Basket", b =>
                 {
@@ -24,6 +46,9 @@ namespace ProchocBackend.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalPrice")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -63,6 +88,12 @@ namespace ProchocBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("BillingAdress")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Country")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
@@ -70,6 +101,9 @@ namespace ProchocBackend.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("LastName")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Phone")
                         .HasColumnType("longtext");
 
                     b.HasKey("CustomerId");
@@ -83,6 +117,9 @@ namespace ProchocBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
@@ -92,9 +129,21 @@ namespace ProchocBackend.Migrations
                     b.Property<string>("Price")
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ProchocBackend.Database.Admin", b =>
+                {
+                    b.HasOne("ProchocBackend.Database.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("ProchocBackend.Database.Basket", b =>

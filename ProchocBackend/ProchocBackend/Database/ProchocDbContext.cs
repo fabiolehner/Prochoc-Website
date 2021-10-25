@@ -19,5 +19,6 @@ namespace ProchocBackend.Database
         public DbSet<Basket> Baskets { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<BasketProduct> BasketProducts { get; set; }
+        public DbSet<Admin> Admins { get; set; }
     }
 }

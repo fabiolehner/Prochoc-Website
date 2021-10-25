@@ -13,5 +13,14 @@ namespace ProchocBackend.Database
         public string LastName { get; set; }
         [NotNull]
         public string Email { get; set; }
+
+        [NotNull]
+        public string BillingAdress { get; set; }
+
+        [NotNull]
+        public string Country { get; set; }
+
+        [NotNull]
+        public string Phone { get; set; }
     }
 }

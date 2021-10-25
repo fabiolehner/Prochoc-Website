@@ -15,5 +15,9 @@ namespace ProchocBackend.Database
         public string Price { get; set; }
         [NotNull]
         public string Picture { get; set; }
+
+        public int Stock { get; set; }
+
+        public string Description { get; set; }
     }
 }
