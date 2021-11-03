@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProchocBackend.Database
 {
@@ -22,28 +21,4 @@ namespace ProchocBackend.Database
         public DbSet<BasketProduct> BasketProducts { get; set; }
         public DbSet<Admin> Admins { get; set; }
     }
-=======
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace ProchocBackend.Database
-{
-    public class ProchocDbContext : DbContext
-    {
-        public ProchocDbContext(DbContextOptions<ProchocDbContext> options)
-            : base(options)
-        { }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // modelBuilder.Entity<Basket>()
-            //     .HasMany(c => c.Products)
-            //     .WithMany(x => x.Baskets);
-        }
-
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Basket> Baskets { get; set; }
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<BasketProduct> BasketProducts { get; set; }
-    }
->>>>>>> Bastian
 }
