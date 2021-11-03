@@ -1,0 +1,36 @@
+body{
+    background-color: pink;
+    background: #f5f3f3;
+}
+.container{
+    background: E8F0F9;
+}
+.row-4{
+    background-color: F7CAC9;
+    background-color:rgb(227, 235, 240);
+    margin-top:10px;
+    padding: 20px;
+    outline: 2px solid #ccc;
+    outline-offset: -10px;
+    -moz-outline-radius: 10px;
+    -webkit-outline-radius: 10px;
+}
+.col-8{
+    background-color:rgb(227, 235, 240);
+    margin-top:10px;
+    padding: 20px;
+    outline: 2px solid #ccc;
+    outline-offset: -10px;
+    -moz-outline-radius: 10px;
+    -webkit-outline-radius: 10px;
+}
+.heading{
+    color: black; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 48px; margin: 0; 
+}
+
+.container2{
+    background-color:rgb(227, 235, 240);
+}
+.list-group-item{
+    background-color:rgb(241, 241, 238);
+}
