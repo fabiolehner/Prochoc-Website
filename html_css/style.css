@@ -420,8 +420,8 @@ img{
         margin-top: 10%;
     }
 
-    .homepage3{
-        visibility: hidden;
+    .homepage3 .text3 p{
+        font-size: 80pt;
     }
 
 
@@ -495,7 +495,45 @@ img{
         line-height: 27px;
     }
 
+    .homepage3 #text3{
+       float: none;
+        width: 100%;
+        margin-top: -350px;
+    }
 
+    .homepage3 #stockfoto{
+        float: none;
+        visibility: hidden;
+
+    }
+
+    .homepage4 #stockfoto2{
+        float: none;
+        visibility: hidden;
+    }
+    .homepage4 #text4{
+        margin-top: -250px;
+        float: none;
+        width: 100%;
+    }
+
+
+
+    .homepage2{
+        margin-bottom: -70px;
+    }
+
+    .homepage2 #container #left img{
+        width: 80%;
+    }
+
+    .homepage2 #container #center img{
+        width: 80%;
+    }
+
+    .homepage2 #container #right img{
+        width: 80%;
+    }
     
 }
 
@@ -504,6 +542,7 @@ img{
 
     .homepage1 #title h1{
         font-size: 25pt;
+        margin-top: 100px;
     }
 
     .homepage1 #text{
@@ -513,7 +552,7 @@ img{
     }
 
     .homepage1 #text p {
-        margin-top: 160px;
+        margin-top: 60px;
         margin-left: 10%;
         margin-right: 10%;
         font-size: 11pt;
