@@ -1,0 +1,12 @@
+<br>
+<div id="shop-content">
+    <p id="title">Shop</p>
+    <div id="shop-items">
+        <mat-card class="shop-item" *ngFor="let i of shopItems">
+            <img id="item-image" [src]="i.image"/>
+            <p id="item-title">{{ i.name }}</p>
+            <p id="item-price">{{ i.price }}</p>
+        </mat-card>    
+    </div>
+    <br>
+</div>
