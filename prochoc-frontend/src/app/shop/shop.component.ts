@@ -14,10 +14,9 @@ export class ShopComponent implements OnInit {
     constructor() { }
 
     ngOnInit(): void {
-        this.shopItems.push(new ShopItem("Product 1", 4.25, "none"));
-        this.shopItems.push(new ShopItem("Product 2", 3.25, "none"));
-        this.shopItems.push(new ShopItem("Product 3", 1.65, "none"));
-        this.shopItems.push(new ShopItem("Product 4", 4.50, "none"));
+        this.shopItems.push(new ShopItem("Product 1", 4.25, "/assets/images/product1.png"));
+        this.shopItems.push(new ShopItem("Product 2", 3.25, "/assets/images/product2.png"));
+        this.shopItems.push(new ShopItem("Product 3", 1.65, "/assets/images/product3.png"));
     }
     
     @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
