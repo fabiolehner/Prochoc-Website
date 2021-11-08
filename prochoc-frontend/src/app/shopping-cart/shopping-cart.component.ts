@@ -29,11 +29,11 @@ export class ShoppingCartComponent implements OnInit {
     displayedColumns = ['image', 'name', 'count', 'price', 'delete']
 
     ngOnInit(): void {
-        this.basketItems.push(new BasketItem(new ShopItem("Product 1", 4.25, "/assets/images/product1.png"), 5));
-        this.basketItems.push(new BasketItem(new ShopItem("Product 1", 4.25, "/assets/images/product2.png"), 2));
-        this.basketItems.push(new BasketItem(new ShopItem("Product 1", 4.25, "/assets/images/product1.png"), 123));
-        this.basketItems.push(new BasketItem(new ShopItem("Product 1", 4.25, "/assets/images/product3.png"), 3));
-        this.basketItems.push(new BasketItem(new ShopItem("Product 1", 4.25, "/assets/images/product2.png"), 2));
+        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product1.png", 1), 5));
+        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product2.png", 1), 2));
+        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product1.png", 1), 123));
+        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product3.png", 1), 3));
+        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product2.png", 1), 2));
         console.log(this.basketItems);
         
     }

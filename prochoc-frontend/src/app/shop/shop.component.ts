@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShopItem } from '../core/model/shop_item';
+import { ConnectorService } from '../core/service/connector.service';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 @Component({
@@ -11,12 +12,10 @@ export class ShopComponent implements OnInit {
 
     public shopItems: Array<ShopItem> = new Array<ShopItem>();
 
-    constructor() { }
+    constructor(private connector: ConnectorService) { }
 
     ngOnInit(): void {
-        this.shopItems.push(new ShopItem("Product 1", 4.25, "/assets/images/product1.png"));
-        this.shopItems.push(new ShopItem("Product 2", 3.25, "/assets/images/product2.png"));
-        this.shopItems.push(new ShopItem("Product 3", 1.65, "/assets/images/product3.png"));
+        this.connector.getProducts((products) => this.shopItems = products);
     }
     
     @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;

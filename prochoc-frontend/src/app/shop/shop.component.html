@@ -3,7 +3,7 @@
     <p id="title">Shop</p>
     <div id="shop-items">
         <mat-card class="shop-item" *ngFor="let i of shopItems">
-            <img id="item-image" [src]="i.picture"/>
+            <img id="item-image" [src]="'/assets/images/' + i.picture"/>
             <p id="item-title">{{ i.name }}</p>
             <p id="item-price">{{ i.price }} €</p>
         </mat-card>    
