@@ -16,7 +16,7 @@ const routes: Routes = [
 
     // Otherwise redirect to the main page if a
     // non existent route has been specified.  
-    { path: "**", redirectTo: "inbox" }
+    { path: "**", redirectTo: "home" }
 ];
 
 @NgModule({
