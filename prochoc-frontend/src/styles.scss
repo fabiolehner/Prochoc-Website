@@ -1,0 +1,19 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+@import "styles/page-common.scss";
+
+html, body { 
+    height: 100%;
+}
+
+html {
+    position: relative;
+    min-height: 100vh;
+}
+
+body {
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
+}

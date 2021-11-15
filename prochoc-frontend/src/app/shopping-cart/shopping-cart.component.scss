@@ -1,0 +1,33 @@
+
+#cart-content {
+    position: absolute;
+    width: 50em;
+    height: 100vh;
+    z-index: 100;
+    top: 5em;
+    right: 0;
+    background-color: white;
+}
+
+
+#basket-table {
+    width: 100%;
+}
+
+.item-image {
+    width: 6em;
+    height: auto;
+}
+
+#checkout {
+    width: calc(100% - 8em);
+    margin-left: 4em;
+    margin-right: 4em;
+    margin-top: 1em;
+}
+
+#price {
+    font-size: 2em;
+    margin-left: 2em;
+    margin-top: 1em;
+}
