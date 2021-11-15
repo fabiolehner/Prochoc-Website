@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.component';
 
 @Component({
     selector: 'home-page',

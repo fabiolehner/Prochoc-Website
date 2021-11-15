@@ -48,5 +48,5 @@
     <div id="info">
         <p id="price">Gesamtpreis: {{calculateSum()}} €</p>
     </div>
-    <button id="checkout" mat-raised-button color="primary" [disabled]="basketItems.length == 0">Zum Checkout</button>
+    <button id="checkout" mat-raised-button color="primary" [disabled]="basketItems.length == 0" (click)="checkout()">Zum Checkout</button>
 </div>

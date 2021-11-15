@@ -11,10 +11,10 @@ import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { ShopComponent } from './shop/shop.component';
-import { HomeComponent } from './home/home.component';
+import { ShopComponent } from './pages/shop/shop.component';
+import { HomeComponent } from './pages/home/home.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [

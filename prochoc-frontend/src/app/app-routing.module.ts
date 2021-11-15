@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ShopComponent } from './shop/shop.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { HomeComponent } from './pages/home/home.component';
+import { ShopComponent } from './pages/shop/shop.component';
 
 export const routingComponents = [ ] 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
       path: "shop",
       component: ShopComponent
+    },
+    {
+        path: "checkout",
+        component: CheckoutComponent
     },
 
     // Otherwise redirect to the main page if a

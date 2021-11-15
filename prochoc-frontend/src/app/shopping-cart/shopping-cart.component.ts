@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations'
 import { ShopItem } from '../core/model/shop_item';
+import { Router } from '@angular/router';
 
 class BasketItem {
     constructor(public item: ShopItem, public count: Number) { }
@@ -28,6 +29,8 @@ export class ShoppingCartComponent implements OnInit {
     public basketItems: Array<BasketItem> = new Array<BasketItem>();
     displayedColumns = ['image', 'name', 'count', 'price', 'delete']
 
+    constructor(private router: Router) { }
+
     ngOnInit(): void {
         this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product1.png", 1), 5));
         this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product2.png", 1), 2));
@@ -50,6 +53,11 @@ export class ShoppingCartComponent implements OnInit {
         var sum = 0;
         this.basketItems.forEach(x => sum += (x.count as number) * (x.item.price as number));
         return sum;
+    }
+
+    checkout() {
+        this.toggleShoppingCart();
+        this.router.navigate(['/checkout']);
     }
 
     get Math() {

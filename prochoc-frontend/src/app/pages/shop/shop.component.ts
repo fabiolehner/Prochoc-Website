@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ShopItem } from '../core/model/shop_item';
-import { ConnectorService } from '../core/service/connector.service';
-import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+import { ShopItem } from '../../core/model/shop_item';
+import { ConnectorService } from '../../core/service/connector.service';
+import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.component';
 
 @Component({
     selector: 'shop-page',
