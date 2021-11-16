@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutComponent } from './pages/about/about.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ShopComponent } from './pages/shop/shop.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
     {
         path: "checkout",
         component: CheckoutComponent
+    },
+    {
+        path: "about",
+        component: AboutComponent
     },
 
     // Otherwise redirect to the main page if a
