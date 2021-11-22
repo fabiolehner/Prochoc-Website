@@ -18,7 +18,11 @@
     width: 6em;
     height: auto;
 }
-
+#price {
+    font-size: 2em;
+    margin-left: 2em;
+    margin-top: 1em;
+}
 #checkout {
     width: calc(100% - 8em);
     margin-left: 4em;
@@ -26,8 +30,4 @@
     margin-top: 1em;
 }
 
-#price {
-    font-size: 2em;
-    margin-left: 2em;
-    margin-top: 1em;
-}
+
