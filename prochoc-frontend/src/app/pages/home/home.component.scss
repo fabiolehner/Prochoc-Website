@@ -7,7 +7,10 @@ html, body {
 body {
     font-family: "Helvetica Neue", sans-serif;
 }
-
+p{
+    font-weight: normal;
+    font-size: 11pt;
+}
 header {
     width: 100%;
     height: 100vh;
@@ -18,10 +21,7 @@ li img{
     height: 15px;
     width: 15px;
 }
-p{
-    font-weight: normal;
-    font-size: 11pt;
-}
+
 h1{
     font-weight: bold;
     font-size: 24pt ;
