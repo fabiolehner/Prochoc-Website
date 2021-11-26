@@ -4,6 +4,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ShopComponent } from './pages/shop/shop.component';
 
+
 export const routingComponents = [ ] 
 const routes: Routes = [
     {
