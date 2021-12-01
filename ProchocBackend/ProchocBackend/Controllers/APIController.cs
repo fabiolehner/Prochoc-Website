@@ -179,7 +179,7 @@ namespace ProchocBackend.Controllers
             };
             await _db.Users.AddAsync(user);
             await _db.SaveChangesAsync();
-            return Ok(user);
+            return Ok();
         }
 
         public record LoginModel(string Email, string Password);
