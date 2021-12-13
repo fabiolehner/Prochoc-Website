@@ -1,7 +1,13 @@
+
 #login-title {
     margin-top: 2em;
     font-size: 3em;
     text-align: center;
+}
+
+
+#login-button {
+    width: 100%;
 }
 
 #login-card {
@@ -11,8 +17,4 @@
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 15em;
-}
-
-#login-button {
-    width: 100%;
 }
