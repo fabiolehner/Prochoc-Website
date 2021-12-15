@@ -11,7 +11,6 @@ import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.compone
 export class ShopComponent implements OnInit {
 
     public shopItems: Array<ShopItem> = new Array<ShopItem>();
-
     constructor(private connector: ConnectorService) { }
 
     ngOnInit(): void {
