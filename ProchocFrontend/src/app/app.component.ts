@@ -6,6 +6,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss' ]
 })
+
 export class AppComponent {
     title = 'prochoc-frontend';
 
