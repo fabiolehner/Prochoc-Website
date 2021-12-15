@@ -25,4 +25,7 @@ export class ShopComponent implements OnInit {
     toggleShoppingCart(): void {
         this.shoppingCart.toggleShoppingCart();
     }
+    test(){
+        console.log("test");
+    }
 }

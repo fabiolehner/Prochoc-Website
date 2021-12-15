@@ -2,7 +2,7 @@
 <div id="shop-content">
     <p id="title">Shop</p>
     <div id="shop-items">
-        <mat-card class="shop-item" *ngFor="let i of shopItems">
+        <mat-card class="shop-item" *ngFor="let i of shopItems" (click)="test()">
             <img id="item-image" [src]="'/assets/images/' + i.picture"/>
             <p id="item-title">{{ i.name }}</p>
             <p id="item-price">{{ i.price }} €</p>

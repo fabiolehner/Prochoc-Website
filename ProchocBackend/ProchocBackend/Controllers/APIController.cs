@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProchocBackend.Database;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.AspNetCore.Authorization;
+using System.Threading.Tasks;
 
 namespace ProchocBackend.Controllers
 {
@@ -16,13 +16,13 @@ namespace ProchocBackend.Controllers
     {
         private readonly ProchocDbContext _db;
         public APIController(ProchocDbContext context)
-        { 
+        {
             _db = context;
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Erdbeere",
                 Price = "4,99",
-                Picture ="product1.png"
+                Picture = "product1.png"
             });
             CreateDefaultProduct(new Product()
             {
@@ -54,7 +54,7 @@ namespace ProchocBackend.Controllers
         {
             return await _db.Products.ToListAsync();
         }
-        
+
         [HttpPost]
         [Route("createProduct")]
         public async Task<ActionResult> CreateProduct([FromBody] Product product)
@@ -95,7 +95,7 @@ namespace ProchocBackend.Controllers
         }
 
         public record BasketRequestModel(string CustomerId, string ProductId, string Amount);
-        
+
         [HttpPost]
         [Route("addToBasket")]
         public async Task<ActionResult> AddToBasket([FromBody] BasketRequestModel requestModel)
@@ -105,19 +105,27 @@ namespace ProchocBackend.Controllers
             var amount = int.Parse(requestModel.Amount);
             if (product == null) return NotFound(); // Invalid or unavailable product given
 
-            //var basket = await _db.Baskets.Where(b => b.Customer.CustomerId.ToString() == requestModel.CustomerId)
-            //    .Include(b => b.Customer)
-            //    .FirstOrDefaultAsync();
+            var basket = await _db.Baskets.Where(b => b.User.Id.ToString() == requestModel.CustomerId)
+            .Include(b => b.User)
+            .FirstOrDefaultAsync();
+            if (!await _db.BasketProducts.AnyAsync(b=>b.Product.Id==product.Id&&b.Basket.Id==basket.Id)){
+
+                var newEntry = new BasketProduct()
+                {
+                    Amount = amount,
+                    Basket = basket,
+                    Product = product
+                };
+                await _db.BasketProducts.AddAsync(newEntry);
+            }
+            else
+            {
+               var basketProduct= await _db.BasketProducts.FirstOrDefaultAsync(b => b.Product.Id == product.Id && b.Basket.Id == basket.Id);
+                basketProduct.Amount += amount;
+            }
             
-            //var newEntry = new BasketProduct()
-            //{
-            //    Amount = amount,
-            //    Basket = basket,
-            //    Product = product
-            //};
-            //await _db.BasketProducts.AddAsync(newEntry);
-            //await _db.SaveChangesAsync();
-            
+            await _db.SaveChangesAsync();
+
             return Ok();
         }
 
@@ -125,43 +133,43 @@ namespace ProchocBackend.Controllers
         [Route("removeFromBasket")]
         public async Task<ActionResult> RemoveFromBasket([FromBody] BasketRequestModel requestModel)
         {
-            //var basketProduct = _db.BasketProducts
-            //    .Where(bp => bp.Basket.Customer.CustomerId.ToString() == requestModel.CustomerId)
-            //    .Where(bp => bp.Amount.ToString() == requestModel.Amount)
-            //    .Where(bp => bp.Product.Id.ToString() == requestModel.ProductId)
-            //    .Include(bp => bp.Basket)
-            //    .Include(bp => bp.Basket.Customer)
-            //    .Include(bp => bp.Product)
-            //    .ToList()
-            //    .FirstOrDefault();
+            var basketProduct = _db.BasketProducts
+                .Where(bp => bp.Basket.User.Id.ToString() == requestModel.CustomerId)
+                .Where(bp => bp.Amount.ToString() == requestModel.Amount)
+                .Where(bp => bp.Product.Id.ToString() == requestModel.ProductId)
+                .Include(bp => bp.Basket)
+                .Include(bp => bp.Basket.User)
+                .Include(bp => bp.Product)
+                .ToList()
+                .FirstOrDefault();
 
-            //if (basketProduct == null) return NotFound();
-            //_db.BasketProducts.Remove(basketProduct);
-            //await _db.SaveChangesAsync();
+            if (basketProduct == null) return NotFound();
+            _db.BasketProducts.Remove(basketProduct);
+            await _db.SaveChangesAsync();
             return Ok();
         }
-        
+
         public record GetBasketModel(string CustomerId);
 
-        //[HttpPost]
-        //[Route("getBasket")]
-        //public IEnumerable GetBasket([FromBody] GetBasketModel model)
-        //{
-        //var basketProduct = _db.BasketProducts
-        //    .Where(bp => bp.Basket.Customer.CustomerId.ToString() == model.CustomerId)
-        //    .Include(bp => bp.Basket)
-        //    .Include(bp => bp.Basket.Customer)
-        //    .Include(bp => bp.Product)
-        //    .ToList();
+        [HttpPost]
+        [Route("getBasket")]
+        public IEnumerable GetBasket([FromBody] GetBasketModel model)
+        {
+            var basketProduct = _db.BasketProducts
+                .Where(bp => bp.Basket.User.Id.ToString() == model.CustomerId)
+                .Include(bp => bp.Basket)
+                .Include(bp => bp.Basket.User)
+                .Include(bp => bp.Product)
+                .ToList();
 
-        //return basketProduct.Select(bp => new
-        //{
-        //    Amount = bp.Amount,
-        //    Product = bp.Product
-        //});
-        //}
+            return basketProduct.Select(bp => new
+            {
+                Amount = bp.Amount,
+                Product = bp.Product
+            });
+        }
 
-        public record RegisterModel(string FirstName, string LastName, string Email, 
+        public record RegisterModel(string FirstName, string LastName, string Email,
             string BillingAddress, string Country, string Password);
         [HttpPost]
         [Route("register")]
@@ -180,14 +188,14 @@ namespace ProchocBackend.Controllers
             };
             await _db.Users.AddAsync(user);
             await _db.SaveChangesAsync();
-           await _db.Baskets.AddAsync(new Basket { User = user });
+            await _db.Baskets.AddAsync(new Basket { User = user });
             return Ok();
         }
 
         public record LoginModel(string Email, string Password);
         [HttpPost]
         [Route("login")]
-        public async Task<ActionResult> Login([FromBody] LoginModel model)
+        public ActionResult Login([FromBody] LoginModel model)
         {
             var shaM = new SHA512Managed();
             var hashedPassword = shaM.ComputeHash(Encoding.UTF8.GetBytes(model.Password));
