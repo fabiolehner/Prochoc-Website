@@ -38,6 +38,7 @@ namespace ProchocBackend.Controllers
             });
         }
 
+
         private void CreateDefaultProduct(Product product)
         {
             if (!_db.Products.Any(x => x.Name == product.Name))
@@ -179,6 +180,7 @@ namespace ProchocBackend.Controllers
             };
             await _db.Users.AddAsync(user);
             await _db.SaveChangesAsync();
+           await _db.Baskets.AddAsync(new Basket { User = user });
             return Ok();
         }
 
