@@ -4,8 +4,8 @@ import { ConnectorService } from '../../core/service/connector.service';
 import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.component';
 
 @Component({
-    selector: 'shop-page',
     templateUrl: 'shop.component.html',
+    selector: 'shop-page',  
     styleUrls: ['shop.component.scss']
 })
 export class ShopComponent implements OnInit {
