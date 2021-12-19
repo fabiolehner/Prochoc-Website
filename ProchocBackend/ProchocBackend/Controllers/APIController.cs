@@ -22,22 +22,21 @@ namespace ProchocBackend.Controllers
             {
                 Name = "PROCHOC Erdbeere",
                 Price = "4,99",
-                Picture = "product1.png"
+                Picture = "/assets/images/product1.png"
             });
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Himbeere",
                 Price = "4,99",
-                Picture = "product2.png"
+                Picture = "/assets/images/product2.png"
             });
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Blaubeere",
                 Price = "4,99",
-                Picture = "product3.png"
+                Picture = "/assets/images/product3.png"
             });
         }
-
 
         private void CreateDefaultProduct(Product product)
         {
@@ -53,6 +52,13 @@ namespace ProchocBackend.Controllers
         public async Task<IEnumerable> GetProducts()
         {
             return await _db.Products.ToListAsync();
+        }
+
+        [HttpGet]
+        [Route("getProductById")]
+        public async Task<Product> GetProductById([FromQuery] int id)
+        {
+            return await _db.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         [HttpPost]
@@ -106,10 +112,10 @@ namespace ProchocBackend.Controllers
             if (product == null) return NotFound(); // Invalid or unavailable product given
 
             var basket = await _db.Baskets.Where(b => b.User.Id.ToString() == requestModel.CustomerId)
-            .Include(b => b.User)
-            .FirstOrDefaultAsync();
-            if (!await _db.BasketProducts.AnyAsync(b=>b.Product.Id==product.Id&&b.Basket.Id==basket.Id)){
-
+                .Include(b => b.User)
+                .FirstOrDefaultAsync();
+            if (!await _db.BasketProducts.AnyAsync(b=>b.Product.Id==product.Id&&b.Basket.Id==basket.Id)) 
+            {
                 var newEntry = new BasketProduct()
                 {
                     Amount = amount,
@@ -120,12 +126,11 @@ namespace ProchocBackend.Controllers
             }
             else
             {
-               var basketProduct= await _db.BasketProducts.FirstOrDefaultAsync(b => b.Product.Id == product.Id && b.Basket.Id == basket.Id);
+                var basketProduct = await _db.BasketProducts
+                    .FirstOrDefaultAsync(b => b.Product.Id == product.Id && b.Basket.Id == basket.Id);
                 basketProduct.Amount += amount;
             }
-            
             await _db.SaveChangesAsync();
-
             return Ok();
         }
 
