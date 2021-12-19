@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { trigger, transition, animate, style } from '@angular/animations'
 import { ShopItem } from '../core/model/shop_item';
 import { Router } from '@angular/router';
+import { ConnectorService } from '../core/service/connector.service';
+import { Basket } from '../core/util/basket';
 
-class BasketItem {
+export class BasketItem {
     constructor(public item: ShopItem, public count: Number) { }
 }
 
@@ -29,16 +31,15 @@ export class ShoppingCartComponent implements OnInit {
     public basketItems: Array<BasketItem> = new Array<BasketItem>();
     displayedColumns = ['image', 'name', 'count', 'price', 'delete']
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private connector: ConnectorService) { }
 
     ngOnInit(): void {
-        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product1.png", 1), 5));
-        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product2.png", 1), 2));
-        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product1.png", 1), 123));
-        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product3.png", 1), 3));
-        this.basketItems.push(new BasketItem(new ShopItem(0, "Product 1", 4.25, "/assets/images/product2.png", 1), 2));
-        console.log(this.basketItems);
-        
+        Basket.accessWrapper((items) => {
+            items.forEach(e => {
+                this.connector.getProductById(e.item.id as number, (product) => this.basketItems.push(new BasketItem(product, e.count)));
+            })
+            return items;
+        });
     }
 
     toggleShoppingCart() {
@@ -47,6 +48,7 @@ export class ShoppingCartComponent implements OnInit {
 
     deleteItem(item: BasketItem) {
         this.basketItems = this.basketItems.filter(x => x != item);
+        Basket.accessWrapper(() => this.basketItems);
     }
 
     calculateSum(): Number {
