@@ -20,6 +20,7 @@ export class ShopComponent implements OnInit {
         this.shopItems.push(new ShopItem(0, "Produkt 3", 4, "product3.png", 30, "Description"))
     }
     
+    
     @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
 
     toggleShoppingCart(): void {
