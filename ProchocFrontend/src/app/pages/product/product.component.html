@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+<div id="content">
+    <div id="left">
+        <div id="img-wrapper">
+            <img src="{{product.picture}}">
+        </div>
+    </div>
+    <div id="right">
+        <p id="title">{{product.name}}</p>
+        <div id="price-wrapper">
+            <p id="price">{{product.price}} €</p>
+            <p id="price-kg">{{product.price }} € / kg</p>
+        </div>
+        <div id="amount-wrapper">
+            <button mat-icon-button (click)="decrementAmount()">
+                <mat-icon>remove</mat-icon>
+            </button>
+            <p>{{ selectedAmount }}</p>
+            <button mat-icon-button (click)="incrementAmount()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+        <div id="add-to-cart">
+            <button mat-icon-button (click)="addToBasket()">
+                <mat-icon>shopping_cart</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
