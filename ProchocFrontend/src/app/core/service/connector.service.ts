@@ -19,6 +19,15 @@ export class ConnectorService {
             .subscribe(data => finishedCallback(data));
     }
 
+    getProductById(id: number, finishedCallback: (product: ShopItem) => void) {
+        this.client.get<ShopItem>(this.API_URL + `getProductById?id=${id}`)
+            .subscribe(data => finishedCallback(data));
+    }
+
+    addToBasket(product: ShopItem, amount: number, finishedCallback: () => void) {
+        // this.client.post(this.API_URL + "addToBasket")
+    }
+
     login(loginModel: LoginModel, finishedCallback: (loginData: LoginData) => void) {
         this.client.post<LoginData>(this.API_URL + "login", JSON.stringify(loginModel), { headers: HEADERS } )
             .subscribe(data => console.log(JSON.stringify(data)));
