@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginData, LoginModel } from '../model/login_model';
+import { BasketItem } from 'src/app/shopping-cart/shopping-cart.component';
+import { LoginData, LoginModel, RegisterModel } from '../model/login_model';
 import { ShopItem } from '../model/shop_item';
 
 const HEADERS = new HttpHeaders({'content-type': 'application/json'});
@@ -10,7 +11,7 @@ const HEADERS = new HttpHeaders({'content-type': 'application/json'});
 })
 export class ConnectorService {
 
-    API_URL = "http://localhost:5000/api/prochoc/";
+    API_URL = "https://prochoc-webapi.azurewebsites.net/api/prochoc/";
 
     constructor(private client: HttpClient) { }
 
@@ -24,12 +25,30 @@ export class ConnectorService {
             .subscribe(data => finishedCallback(data));
     }
 
-    addToBasket(product: ShopItem, amount: number, finishedCallback: () => void) {
-        // this.client.post(this.API_URL + "addToBasket")
+    async addToBasket(product: ShopItem, amount: number, finishedCallback: () => void) {
+        var token = localStorage.getItem("__bearer");
+        await this.client.post(this.API_URL + "addToBasket", JSON.stringify({productId: product.id, count: amount}),
+            {
+                headers: new HttpHeaders({'content-type': 'application/json', 'Authorization': `Bearer ${token}`})
+            }).toPromise();
     }
 
-    login(loginModel: LoginModel, finishedCallback: (loginData: LoginData) => void) {
+    async getBasket(): Promise<BasketItem[]> {
+        var token = localStorage.getItem("__bearer");
+        var result = await this.client.get<BasketItem[]>(this.API_URL + "getBasket",
+            {
+                headers: new HttpHeaders({'content-type': 'application/json', 'Authorization': `Bearer ${token}`})
+            }).toPromise();
+        return result != null && result.length > 0 ? result : []
+    }
+
+    login(loginModel: LoginModel, finishedCallback: (loginData: LoginData) => void, onError: () => void) {
         this.client.post<LoginData>(this.API_URL + "login", JSON.stringify(loginModel), { headers: HEADERS } )
-            .subscribe(data => console.log(JSON.stringify(data)));
+            .subscribe(data => finishedCallback(data), (error) => onError());
+    }
+
+    register(registerModel: RegisterModel, finishedCallback: () => void) {
+        this.client.post(this.API_URL + "register", JSON.stringify(registerModel), { headers: HEADERS })
+            .subscribe(data => finishedCallback());
     }
 }
