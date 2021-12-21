@@ -12,6 +12,7 @@ export class AppComponent {
     @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
 
     toggleShoppingCart(): void {
+        this.shoppingCart.refetch();
         this.shoppingCart.toggleShoppingCart();
     }
 }

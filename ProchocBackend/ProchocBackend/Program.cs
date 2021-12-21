@@ -20,7 +20,7 @@ namespace ProchocBackend
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>().UseUrls("http://localhost:5000", "https://localhost:5001");
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }

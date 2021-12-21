@@ -1,4 +1,4 @@
 
 export class ShopItem {
-    public constructor(public id: Number, public name: String, public price: Number, public picture: String, public stock: Number, public description?: String) { }
+    public constructor(public id: Number, public name: String, public price: number, public picture: String, public stock: number, public description?: String) { }
 }

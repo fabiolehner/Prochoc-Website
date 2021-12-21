@@ -19,6 +19,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { AboutComponent } from './pages/about/about.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ProductComponent } from './pages/product/product.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ProductComponent } from './pages/product/product.component';
     CheckoutComponent,
     AboutComponent,
     LoginComponent,
-    ProductComponent
+    ProductComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ import { ProductComponent } from './pages/product/product.component';
     MatCardModule,
     MatTableModule,
     MatInputModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

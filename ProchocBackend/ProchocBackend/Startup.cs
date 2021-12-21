@@ -27,9 +27,8 @@ namespace ProchocBackend
         public void ConfigureServices(IServiceCollection services)
         {
             var mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ProchocDbContext>(option =>
-                option.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr))
-                    .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole())));
+            services.AddDbContext<ProchocDbContext>(options => options.UseSqlServer(
+                Configuration["ConnectionStrings:DefaultConnection"]));
 
             services.AddAuthentication(x =>
             {
@@ -62,7 +61,7 @@ namespace ProchocBackend
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(options => options.WithOrigins("http://localhost:5000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
+            app.UseCors(options => options.AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
