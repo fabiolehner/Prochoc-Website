@@ -6,7 +6,7 @@ import { ConnectorService } from '../core/service/connector.service';
 import { Basket } from '../core/util/basket';
 
 export class BasketItem {
-    constructor(public item: ShopItem, public count: Number) { }
+    constructor(public item: ShopItem, public count: number) { }
 }
 
 @Component({
@@ -34,12 +34,12 @@ export class ShoppingCartComponent implements OnInit {
     constructor(private router: Router, private connector: ConnectorService) { }
 
     ngOnInit(): void {
-        Basket.accessWrapper((items) => {
-            items.forEach(e => {
-                this.connector.getProductById(e.item.id as number, (product) => this.basketItems.push(new BasketItem(product, e.count)));
-            })
-            return items;
-        });
+        this.refetch();
+    }
+
+    async refetch() {
+        this.basketItems = await this.connector.getBasket();
+        console.log("refetch");
     }
 
     toggleShoppingCart() {
@@ -48,6 +48,20 @@ export class ShoppingCartComponent implements OnInit {
 
     deleteItem(item: BasketItem) {
         this.basketItems = this.basketItems.filter(x => x != item);
+        Basket.accessWrapper(() => this.basketItems);
+    }
+
+    calculatePrice(item: BasketItem): number {
+        return item.item.price * item.count;
+    }
+
+    incrementCount(i: BasketItem) {
+        i.count = i.count + 1;
+        Basket.accessWrapper(() => this.basketItems);
+    }
+
+    decrementCount(i: BasketItem) {
+        i.count = Math.max(1, i.count - 1);
         Basket.accessWrapper(() => this.basketItems);
     }
 
