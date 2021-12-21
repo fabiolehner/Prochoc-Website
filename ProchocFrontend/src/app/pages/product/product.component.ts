@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ShopItem } from 'src/app/core/model/shop_item';
 import { ConnectorService } from 'src/app/core/service/connector.service';
@@ -12,7 +13,7 @@ import { BasketItem } from 'src/app/shopping-cart/shopping-cart.component';
 })
 export class ProductComponent implements OnInit {
 
-    constructor(private connector: ConnectorService, private router: Router) { }
+    constructor(private connector: ConnectorService, private router: Router, private snackBar: MatSnackBar) { }
 
     selectedAmount: number = 1;
     product: ShopItem = undefined;
@@ -26,10 +27,9 @@ export class ProductComponent implements OnInit {
     incrementAmount = () => this.selectedAmount++;
     decrementAmount = () => this.selectedAmount = Math.max(1, --this.selectedAmount);
 
-    addToBasket() {
-        Basket.accessWrapper((items) => {
-            items.push(new BasketItem(this.product, this.selectedAmount))
-            return items;
+    async addToBasket() {
+        await this.connector.addToBasket(this.product, this.selectedAmount, () => {
+            this.snackBar.open("Zum Warenkorb hinzugefügt!", "Okay");
         })
     }
 
