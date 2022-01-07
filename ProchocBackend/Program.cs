@@ -18,6 +18,14 @@ namespace ProchocBackend
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Program.cs
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+=======
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    //webBuilder.UseStartup<Startup>().UseUrls("http://localhost:80", "https://localhost:443");
+                    webBuilder.UseStartup<Startup>().UseUrls("http://localhost:5000", "https://localhost:5001");
+                });
+>>>>>>> Stashed changes:ProchocBackend/Program.cs
     }
 }

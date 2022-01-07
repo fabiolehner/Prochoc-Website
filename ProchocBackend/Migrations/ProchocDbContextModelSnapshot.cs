@@ -2,41 +2,46 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
+=======
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProchocBackend.Database;
 
 namespace ProchocBackend.Migrations
 {
     [DbContext(typeof(ProchocDbContext))]
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/20210615130857_init.Designer.cs
-    [Migration("20210615130857_init")]
-    partial class init
-=======
-    [Migration("20211221122641_Initial")]
-    partial class Initial
->>>>>>> Stashed changes:ProchocBackend/Migrations/20211221122641_Initial.Designer.cs
+    partial class ProchocDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
+                .HasAnnotation("Relational:MaxIdentifierLength", 64)
+                .HasAnnotation("ProductVersion", "5.0.6");
+=======
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
 
             modelBuilder.Entity("ProchocBackend.Database.Basket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
+                        .HasColumnType("int");
+=======
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
 
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/20210615130857_init.Designer.cs
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
 =======
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime2");
@@ -44,10 +49,7 @@ namespace ProchocBackend.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("TotalPrice")
-                        .HasColumnType("int");
-
->>>>>>> Stashed changes:ProchocBackend/Migrations/20211221122641_Initial.Designer.cs
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
                     b.HasKey("Id");
 
                     b.HasIndex("CustomerId");
@@ -55,17 +57,30 @@ namespace ProchocBackend.Migrations
                     b.ToTable("Baskets");
                 });
 
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
             modelBuilder.Entity("ProchocBackend.Database.BasketProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("BasketId")
+=======
+            modelBuilder.Entity("ProchocBackend.Database.BasketEntry", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Amount")
+                    b.Property<int?>("BasketId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BasketId")
+                    b.Property<int>("Count")
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
                         .HasColumnType("int");
 
                     b.Property<int?>("ProductId")
@@ -77,6 +92,7 @@ namespace ProchocBackend.Migrations
 
                     b.HasIndex("ProductId");
 
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
                     b.ToTable("BasketProducts");
                 });
 
@@ -84,10 +100,8 @@ namespace ProchocBackend.Migrations
                 {
                     b.Property<int>("CustomerId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/20210615130857_init.Designer.cs
                     b.Property<string>("Email")
                         .HasColumnType("longtext");
 
@@ -96,7 +110,41 @@ namespace ProchocBackend.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("longtext");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customers");
+                });
+
+            modelBuilder.Entity("ProchocBackend.Database.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Picture")
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Price")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
 =======
+                    b.ToTable("BasketEntries");
+                });
+
+            modelBuilder.Entity("ProchocBackend.Database.Product", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -108,30 +156,22 @@ namespace ProchocBackend.Migrations
 
                     b.Property<string>("Price")
                         .HasColumnType("nvarchar(max)");
->>>>>>> Stashed changes:ProchocBackend/Migrations/20211221122641_Initial.Designer.cs
 
-                    b.HasKey("CustomerId");
+                    b.Property<int>("Stock")
+                        .HasColumnType("int");
 
-                    b.ToTable("Customers");
+                    b.HasKey("Id");
+
+                    b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("ProchocBackend.Database.Product", b =>
+            modelBuilder.Entity("ProchocBackend.Database.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/20210615130857_init.Designer.cs
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Picture")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Price")
-                        .HasColumnType("longtext");
-=======
                     b.Property<string>("BillingAddress")
                         .HasColumnType("nvarchar(max)");
 
@@ -149,15 +189,19 @@ namespace ProchocBackend.Migrations
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
->>>>>>> Stashed changes:ProchocBackend/Migrations/20211221122641_Initial.Designer.cs
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Users");
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
                 });
 
             modelBuilder.Entity("ProchocBackend.Database.Basket", b =>
                 {
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
                     b.HasOne("ProchocBackend.Database.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("CustomerId");
@@ -169,16 +213,39 @@ namespace ProchocBackend.Migrations
                 {
                     b.HasOne("ProchocBackend.Database.Basket", "Basket")
                         .WithMany()
+=======
+                    b.HasOne("ProchocBackend.Database.User", "User")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ProchocBackend.Database.BasketEntry", b =>
+                {
+                    b.HasOne("ProchocBackend.Database.Basket", null)
+                        .WithMany("Products")
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
                         .HasForeignKey("BasketId");
 
                     b.HasOne("ProchocBackend.Database.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId");
 
+<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
                     b.Navigation("Basket");
 
                     b.Navigation("Product");
                 });
+=======
+                    b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("ProchocBackend.Database.Basket", b =>
+                {
+                    b.Navigation("Products");
+                });
+>>>>>>> Stashed changes:ProchocBackend/Migrations/ProchocDbContextModelSnapshot.cs
 #pragma warning restore 612, 618
         }
     }
