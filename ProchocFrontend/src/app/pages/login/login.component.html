@@ -1,0 +1,19 @@
+<br>
+<br>
+
+<p id="login-title">Login</p>
+
+<mat-card id="login-card">
+    <mat-form-field appearance="fill" id="username-field">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="loginModel.email">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" id="password-field">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" type="password" [(ngModel)]="loginModel.password">
+    </mat-form-field>
+    <button mat-button style="background: rgb(241, 229, 115)" (click)="performLogin()" id="login-button">Login</button>
+    <br>
+    <p id="register-text">Noch kein Kunde?<br><a routerLink="/register">Hier registrieren!</a></p>
+</mat-card>

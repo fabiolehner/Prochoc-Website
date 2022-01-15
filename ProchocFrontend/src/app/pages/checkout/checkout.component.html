@@ -1,3 +1,4 @@
+<br><br><br><br><br>
 <div class="container">
     <div class="py-5 text-center">
       <img class ="mb-4 d-block mx-auto" src="https://icons.iconarchive.com/icons/iconsmind/outline/512/Checkout-icon.png" alt="Checkout Cart" width="90" height="90">
@@ -174,37 +175,23 @@
             <div class="row-4">
                 <h4 class="d-flex justify-content-between align-item-center">
                 <span class="text-muted">Einkaufswagen</span>
-                <span class="badge bg-secondary squared-pill">3</span>
+                <span class="badge bg-secondary squared-pill">{{basketCount()}}</span>
                 </h4>
                 <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between">
+                <li class="list-group-item d-flex justify-content-between" *ngFor="let p of cartItems">
                     <div>
-                    <h5>Schoki Himbeere</h5>
-                    <span class="text-muted">200kcal</span>
+                    <h5>{{p.item.name}}</h5>
+                    <span class="text-muted">{{p.count}} Stk.</span>
                     </div>
-                    <span class="text-muted">3€</span>
+                    <span class="text-muted">{{p.item.price * p.count}} €</span>
                 </li>
-                <li class="list-group-item d-flex justify-content-between">
-                    <div>
-                    <h5>Schoki Schoki</h5>
-                    <span class="text-muted">230kcal</span>
-                    </div>
-                    <span class="text-muted">3€</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                    <div>
-                    <h5>Schoki Erdbeere</h5>
-                    <span class="text-muted">200kcal</span>
-                    </div>
-                    <span class="text-muted">3€</span>
-                </li>               
                 <br>
                 <br>               
                 <li class="list-group-item d-flex justify-content-between">
                     <div>
                     <h5>Total</h5>
                     </div>
-                    <span class="">€9</span>
+                    <span class="">€ {{ basketSum() }}</span>
                 </li>
                 </ul>
                 <br>

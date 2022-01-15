@@ -9,6 +9,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import {MatInputModule} from '@angular/material/input';
 
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ShopComponent } from './pages/shop/shop.component';
@@ -16,6 +17,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { AboutComponent } from './pages/about/about.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ProductComponent } from './pages/product/product.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,10 @@ import { AboutComponent } from './pages/about/about.component';
     ShopComponent,
     HomeComponent,
     CheckoutComponent,
-    AboutComponent
+    AboutComponent,
+    LoginComponent,
+    ProductComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +44,8 @@ import { AboutComponent } from './pages/about/about.component';
     MatIconModule,
     MatCardModule,
     MatTableModule,
+    MatInputModule,
+    MatSnackBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

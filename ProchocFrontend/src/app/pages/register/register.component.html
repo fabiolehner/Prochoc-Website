@@ -1,0 +1,35 @@
+<br>
+<br>
+
+<p id="register-title">Registrieren</p>
+
+<mat-card id="register-card">
+    <mat-form-field appearance="fill" id="firstname-field">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="First Name" [(ngModel)]="registerModel.firstName">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" id="lastname-field">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="Last Name" type="text" [(ngModel)]="registerModel.lastName">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" id="email-field">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" [(ngModel)]="registerModel.email">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" id="country-field">
+        <mat-label>Country</mat-label>
+        <input matInput placeholder="Country" [(ngModel)]="registerModel.country">
+    </mat-form-field>
+    <br>
+    <mat-form-field appearance="fill" id="password-field">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" type="password" [(ngModel)]="registerModel.password">
+    </mat-form-field>
+    <br>
+    <button mat-button style="background: rgb(241, 229, 115)" (click)="performRegister()" id="register-button">Register</button>
+    <br>
+    <p id="register-text">Bereits Kunde?<br><a routerLink="/login">Hier einloggen!</a></p>
+</mat-card>
