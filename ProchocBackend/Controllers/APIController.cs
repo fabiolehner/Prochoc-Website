@@ -1,16 +1,8 @@
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ProchocBackend.Database;
-=======
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProchocBackend.Database;
+using ProchocBackend.Util;
 using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,7 +10,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
 
 namespace ProchocBackend.Controllers
 {
@@ -27,56 +18,23 @@ namespace ProchocBackend.Controllers
     {
         private readonly ProchocDbContext _db;
         public APIController(ProchocDbContext context)
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-        { 
-=======
         {
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
             _db = context;
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Erdbeere",
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-                Price = "4,99",
-                Picture ="product1.png"
-=======
                 Price = "4.99",
                 Picture = "/assets/images/product1.png"
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
             });
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Himbeere",
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-                Price = "4,99",
-                Picture = "product2.png"
-=======
                 Price = "4.99",
                 Picture = "/assets/images/product2.png"
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
             });
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Blaubeere",
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-                Price = "4,99",
-                Picture = "product3.png"
-            });
-            CreateDefaultUser(new Customer()
-            {
-                FirstName = "Admin",
-                LastName = "Admin",
-                Email = "test@admin.at"
-            });
-            CreateDefaultUser(new Customer()
-            {
-                FirstName = "Franz",
-                LastName = "Huaba",
-                Email = "test@huaba.at"
-            });
-        }
-
-=======
                 Price = "4.99",
                 Picture = "/assets/images/product3.png"
             });
@@ -88,7 +46,6 @@ namespace ProchocBackend.Controllers
                 .FirstOrDefault()?.Value.Replace("\"", "");
         }
 
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
         private void CreateDefaultProduct(Product product)
         {
             if (!_db.Products.Any(x => x.Name == product.Name))
@@ -97,23 +54,20 @@ namespace ProchocBackend.Controllers
                 _db.SaveChanges();
             }
         }
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-        private void CreateDefaultUser(Customer customer)
+
+        [HttpGet]
+        [Route("verify")]
+        public async Task<IActionResult> VerifyEmail([FromQuery] int id)
         {
-            if (!(_db.Customers.Any(x => x.FirstName == customer.FirstName && x.LastName == customer.LastName)))
-            {
-                _db.Customers.Add(customer);
-                _db.SaveChanges();
-                
-                _db.Baskets.Add(new Basket()
-                {
-                    Customer = customer
-                });
-                _db.SaveChanges();
-            }
+            var user = _db.Users.FirstOrDefault(x => x.Id == id);
+            if (user == null)
+                return NotFound();
+
+            user.IsVerified = true;
+            _db.Users.Update(user);
+            await _db.SaveChangesAsync();
+            return Ok("Account verification completed successfully.");
         }
-=======
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
 
         [HttpGet]
         [Route("getProducts")]
@@ -121,9 +75,6 @@ namespace ProchocBackend.Controllers
         {
             return await _db.Products.ToListAsync();
         }
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-        
-=======
 
         [HttpGet]
         [Route("getProductById")]
@@ -132,7 +83,6 @@ namespace ProchocBackend.Controllers
             return await _db.Products.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
         [HttpPost]
         [Route("createProduct")]
         public async Task<ActionResult> CreateProduct([FromBody] Product product)
@@ -161,52 +111,18 @@ namespace ProchocBackend.Controllers
         public async Task<ActionResult> RemoveProduct([FromBody] Product product)
         {
             var entry = await _db.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-            var toRemove = await _db.BasketProducts.Where(bp => bp.Product.Id == product.Id)
-                .Include(bp => bp.Product).Include(bp => bp.Basket).ToListAsync();
-
-            foreach (var bp in toRemove)
-                _db.BasketProducts.Remove(bp);
-
-=======
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
             _db.Products.Remove(entry);
             await _db.SaveChangesAsync();
             return Ok();
         }
 
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-        public record BasketRequestModel(string CustomerId, string ProductId, string Amount);
-        
-        [HttpPost]
-=======
         public record BasketRequestModel(int ProductId, int Count);
         [HttpPost]
         [Authorize]
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
         [Route("addToBasket")]
         public async Task<ActionResult> AddToBasket([FromBody] BasketRequestModel requestModel)
         {
             // Find product
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-            var product = await _db.Products.FirstOrDefaultAsync(x => x.Id.ToString() == requestModel.ProductId);
-            var amount = int.Parse(requestModel.Amount);
-            if (product == null) return NotFound(); // Invalid or unavailable product given
-
-            var basket = await _db.Baskets.Where(b => b.Customer.CustomerId.ToString() == requestModel.CustomerId)
-                .Include(b => b.Customer)
-                .FirstOrDefaultAsync();
-            
-            var newEntry = new BasketProduct()
-            {
-                Amount = amount,
-                Basket = basket,
-                Product = product
-            };
-            await _db.BasketProducts.AddAsync(newEntry);
-            await _db.SaveChangesAsync();
-            
-=======
             var product = await _db.Products.FirstOrDefaultAsync(x => x.Id == requestModel.ProductId);
             if (product == null) return NotFound(); // Invalid or unavailable product given
 
@@ -229,50 +145,10 @@ namespace ProchocBackend.Controllers
             });
 
             await _db.SaveChangesAsync();
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
             return Ok();
         }
 
         [HttpPost]
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Controllers/APIController.cs
-        [Route("removeFromBasket")]
-        public async Task<ActionResult> RemoveFromBasket([FromBody] BasketRequestModel requestModel)
-        {
-            var basketProduct = _db.BasketProducts
-                .Where(bp => bp.Basket.Customer.CustomerId.ToString() == requestModel.CustomerId)
-                .Where(bp => bp.Amount.ToString() == requestModel.Amount)
-                .Where(bp => bp.Product.Id.ToString() == requestModel.ProductId)
-                .Include(bp => bp.Basket)
-                .Include(bp => bp.Basket.Customer)
-                .Include(bp => bp.Product)
-                .ToList()
-                .FirstOrDefault();
-
-            if (basketProduct == null) return NotFound();
-            _db.BasketProducts.Remove(basketProduct);
-            await _db.SaveChangesAsync();
-            return Ok();
-        }
-        
-        public record GetBasketModel(string CustomerId);
-
-        [HttpPost]
-        [Route("getBasket")]
-        public IEnumerable GetBasket([FromBody] GetBasketModel model)
-        {
-            var basketProduct = _db.BasketProducts
-                .Where(bp => bp.Basket.Customer.CustomerId.ToString() == model.CustomerId)
-                .Include(bp => bp.Basket)
-                .Include(bp => bp.Basket.Customer)
-                .Include(bp => bp.Product)
-                .ToList();
-
-            return basketProduct.Select(bp => new
-            {
-                Amount = bp.Amount,
-                Product = bp.Product
-            });
-=======
         [Authorize]
         [Route("removeFromBasket")]
         public async Task<ActionResult> RemoveFromBasket([FromBody] BasketRequestModel requestModel)
@@ -329,11 +205,15 @@ namespace ProchocBackend.Controllers
                 Email = model.Email,
                 BillingAddress = model.BillingAddress,
                 Country = model.Country,
-                PasswordHash = System.Convert.ToBase64String(hashedPassword)
+                PasswordHash = System.Convert.ToBase64String(hashedPassword),
+                IsVerified = false
             };
             await _db.Users.AddAsync(user);
             await _db.Baskets.AddAsync(new Basket { User = user });
             await _db.SaveChangesAsync();
+
+            MailUtil.SendVerificationMail(user);
+
             return Ok();
         }
 
@@ -361,7 +241,6 @@ namespace ProchocBackend.Controllers
         public IEnumerable Test()
         {
             return Enumerable.Range(0, 10);
->>>>>>> Stashed changes:ProchocBackend/Controllers/APIController.cs
         }
     }
 }

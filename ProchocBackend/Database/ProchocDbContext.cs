@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Database/ProchocDbContext.cs
-﻿using Microsoft.EntityFrameworkCore;
-=======
 using Microsoft.EntityFrameworkCore;
->>>>>>> Stashed changes:ProchocBackend/Database/ProchocDbContext.cs
 
 namespace ProchocBackend.Database
 {
@@ -21,14 +17,7 @@ namespace ProchocBackend.Database
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Basket> Baskets { get; set; }
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Database/ProchocDbContext.cs
-        public DbSet<Customer> Customers { get; set; }
-        public DbSet<BasketProduct> BasketProducts { get; set; }
-    }
-}
-=======
         public DbSet<BasketEntry> BasketEntries { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }
->>>>>>> Stashed changes:ProchocBackend/Database/ProchocDbContext.cs

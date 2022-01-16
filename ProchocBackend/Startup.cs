@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Startup.cs
-=======
 using Microsoft.AspNetCore.Authentication.JwtBearer;
->>>>>>> Stashed changes:ProchocBackend/Startup.cs
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -9,14 +6,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Startup.cs
-using ProchocBackend.Database;
-=======
 using Microsoft.IdentityModel.Tokens;
 using ProchocBackend.Controllers;
 using ProchocBackend.Database;
 using System.Text;
->>>>>>> Stashed changes:ProchocBackend/Startup.cs
 
 namespace ProchocBackend
 {
@@ -34,12 +27,6 @@ namespace ProchocBackend
         public void ConfigureServices(IServiceCollection services)
         {
             var mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Startup.cs
-            services.AddDbContext<ProchocDbContext>(option =>
-                option.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr))
-                    .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole())));
-            
-=======
             services.AddDbContext<ProchocDbContext>(options => options.UseSqlServer(
                 Configuration["ConnectionStrings:DefaultConnection"]));
 
@@ -62,7 +49,6 @@ namespace ProchocBackend
                 };
             });
 
->>>>>>> Stashed changes:ProchocBackend/Startup.cs
             services.AddControllers();
             services.AddCors();
         }
@@ -75,16 +61,11 @@ namespace ProchocBackend
                 app.UseDeveloperExceptionPage();
             }
 
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/Startup.cs
-            app.UseCors(options => options.WithOrigins("http://localhost:5000").AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
-            app.UseRouting();
-=======
             app.UseCors(options => options.WithOrigins("http://localhost:5000", "https://localhost:5001")
                 .AllowAnyMethod().AllowAnyHeader().AllowAnyOrigin());
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
->>>>>>> Stashed changes:ProchocBackend/Startup.cs
             app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }

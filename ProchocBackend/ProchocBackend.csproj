@@ -2,18 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
-<<<<<<< Updated upstream:ProchocBackend/ProchocBackend/ProchocBackend.csproj
-    </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
-        <PrivateAssets>all</PrivateAssets>
-        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      </PackageReference>
-      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0" />
-=======
         <UserSecretsId>31b92e9e-1fed-4647-afb9-f596c1835598</UserSecretsId>
     </PropertyGroup>
 
@@ -31,7 +19,6 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.14.1" />
->>>>>>> Stashed changes:ProchocBackend/ProchocBackend.csproj
     </ItemGroup>
 
     <ItemGroup>
