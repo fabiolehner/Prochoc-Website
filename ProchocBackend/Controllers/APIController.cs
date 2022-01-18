@@ -56,12 +56,37 @@ namespace ProchocBackend.Controllers
         }
 
         [HttpGet]
+        [Authorize]
+        [Route("userinfo")]
+        public async Task<IActionResult> GetUserInfo()
+        {
+            var email = GetUser();
+            if (email != null)
+            {
+                var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+                if (user == null)
+                    return Unauthorized();
+
+                return Ok(new
+                {
+                    Email = user.Email,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName
+                });
+            }
+            return Unauthorized();
+        }
+
+        [HttpGet]
         [Route("verify")]
         public async Task<IActionResult> VerifyEmail([FromQuery] int id)
         {
             var user = _db.Users.FirstOrDefault(x => x.Id == id);
             if (user == null)
                 return NotFound();
+
+            if (user.IsVerified)
+                return BadRequest();
 
             user.IsVerified = true;
             _db.Users.Update(user);
@@ -138,12 +163,21 @@ namespace ProchocBackend.Controllers
             if (basket.Products == null)
                 basket.Products = new();
 
-            basket.Products.Add(new BasketEntry
+            var entry = basket.Products.FirstOrDefault(x => x.Id == requestModel.ProductId);
+            if (entry == null)
             {
-                Product = product,
-                Count = requestModel.Count
-            });
+                basket.Products.Add(new BasketEntry
+                {
+                    Product = product,
+                    Count = requestModel.Count
+                });
+            }
+            else
+            {
+                entry.Count += requestModel.Count;
+            }
 
+            _db.Baskets.Update(basket);
             await _db.SaveChangesAsync();
             return Ok();
         }
