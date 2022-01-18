@@ -4,6 +4,7 @@ import { ProductComponent } from 'src/app/pages/product/product.component';
 import { BasketItem } from 'src/app/shopping-cart/shopping-cart.component';
 import { LoginData, LoginModel, RegisterModel } from '../model/login_model';
 import { ShopItem } from '../model/shop_item';
+import { UserInfo } from '../model/user_info';
 
 const HEADERS = new HttpHeaders({'content-type': 'application/json'});
 
@@ -61,5 +62,14 @@ export class ConnectorService {
     register(registerModel: RegisterModel, finishedCallback: () => void) {
         this.client.post(this.API_URL + "register", JSON.stringify(registerModel), { headers: HEADERS })
             .subscribe(data => finishedCallback());
+    }
+
+    getUserInfo(): Promise<UserInfo> {
+        var token = localStorage.getItem("__bearer");
+        return this.client.get<UserInfo>(this.API_URL + "userinfo",
+            {
+                headers: new HttpHeaders({'content-type': 'application/json', 'Authorization': `Bearer ${token}`})
+            }
+        ).toPromise();
     }
 }
