@@ -2,8 +2,13 @@
     <p id="title">PROCHOC</p>
     <div id="links">
         <a id="main-page-login" style="margin-top: 1.6em;"routerLink="login">
-            <mat-icon>login</mat-icon>
-            <span style="font-size: 0.8em">Login</span>
+            <div *ngIf="isLoggedIn()">
+                <p>Eingeloggt als {{ getName() }}</p>
+            </div>
+            <div *ngIf="!isLoggedIn()">
+                <mat-icon>login</mat-icon>
+                <span style="font-size: 0.8em">Login</span>
+            </div>
         </a>
         <a id="shopping-cart-button">
             <button mat-icon-button (click)="toggleShoppingCart()">
