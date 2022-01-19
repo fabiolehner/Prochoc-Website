@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserInfo } from './core/model/user_info';
 import { ConnectorService } from './core/service/connector.service';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -8,12 +8,18 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss' ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'prochoc-frontend';
+
+    userInfo: UserInfo = undefined;
+    
+    @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
 
     constructor(private connector: ConnectorService) { }
 
-    @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;
+    async ngOnInit() {
+        this.userInfo = await this.connector.getUserInfo();
+    }
 
     toggleShoppingCart(): void {
         this.shoppingCart.refetch();
@@ -21,12 +27,7 @@ export class AppComponent {
     }
 
     isLoggedIn(): boolean {
-        return localStorage.getItem("__bearer") != undefined;
-    }
-
-    async getName(): Promise<String> {
-        var info = await this.connector.getUserInfo();
-        return info.firstName + " " + info.lastName;
+        return this.userInfo != undefined;
     }
 }
 
