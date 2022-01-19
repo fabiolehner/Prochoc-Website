@@ -4,6 +4,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 import { ProductComponent } from './pages/product/product.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ShopComponent } from './pages/shop/shop.component';
@@ -33,6 +34,10 @@ const routes: Routes = [
     {
         path: "login",
         component: LoginComponent
+    },
+    {
+        path: "logout",
+        component: LogoutComponent
     },
     {
         path: "register",

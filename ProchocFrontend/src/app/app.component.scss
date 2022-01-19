@@ -1,0 +1,13 @@
+#loginPanel {
+    display: flex;
+    flex-direction: row;
+    flex: content;
+}
+
+#loginPanel > p {
+    float: left;
+}
+
+#loginPanel > button {
+    float:right;
+}

@@ -1,14 +1,19 @@
 <div id="header">
     <p id="title">PROCHOC</p>
     <div id="links">
-        <a id="main-page-login" style="margin-top: 1.6em;"routerLink="login">
-            <div *ngIf="isLoggedIn()">
-                <p>Eingeloggt als {{ getName() }}</p>
-            </div>
-            <div *ngIf="!isLoggedIn()">
+        <a id="main-page-login" style="margin-top: 1.6em;" routerLink="login" *ngIf="!isLoggedIn()">
+            <div >
                 <mat-icon>login</mat-icon>
                 <span style="font-size: 0.8em">Login</span>
             </div>
+        </a>
+        <a id="main-page-login" style="margin-top: 1.6em;" routerLink="logout" *ngIf="isLoggedIn()">
+            <section *ngIf="isLoggedIn()" id="loginPanel">
+                <p>Eingeloggt als {{ userInfo.firstName }} {{ userInfo.lastName }}</p>
+                <button mat-icon-button (click)="toggleShoppingCart()">
+                    <mat-icon>logout</mat-icon>
+                </button>
+            </section>
         </a>
         <a id="shopping-cart-button">
             <button mat-icon-button (click)="toggleShoppingCart()">
