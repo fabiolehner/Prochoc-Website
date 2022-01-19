@@ -2,9 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ProductComponent } from 'src/app/pages/product/product.component';
 import { BasketItem } from 'src/app/shopping-cart/shopping-cart.component';
+import { DeliveryInformation, PersonalInformation } from '../model/checkout_data';
 import { LoginData, LoginModel, RegisterModel } from '../model/login_model';
 import { ShopItem } from '../model/shop_item';
 import { UserInfo } from '../model/user_info';
+import { Basket } from '../util/basket';
 
 const HEADERS = new HttpHeaders({'content-type': 'application/json'});
 
@@ -14,6 +16,7 @@ const HEADERS = new HttpHeaders({'content-type': 'application/json'});
 export class ConnectorService {
 
     API_URL = "https://prochoc-webapi.azurewebsites.net/api/prochoc/";
+    // API_URL = "https://localhost:5001/api/prochoc/";
 
     constructor(private client: HttpClient) { }
 
@@ -71,5 +74,15 @@ export class ConnectorService {
                 headers: new HttpHeaders({'content-type': 'application/json', 'Authorization': `Bearer ${token}`})
             }
         ).toPromise();
+    }
+
+    checkout(personalInformation: PersonalInformation) {
+        var token = localStorage.getItem("__bearer");
+        this.client.post(this.API_URL + "checkout",
+            JSON.stringify({personalInformation: personalInformation, deliveryInformation: new DeliveryInformation(personalInformation)}), 
+            {
+                headers: new HttpHeaders({'content-type': 'application/json', 'Authorization': `Bearer ${token}`})
+            }
+        ).subscribe();
     }
 }
