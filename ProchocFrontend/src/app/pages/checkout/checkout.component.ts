@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { PersonalInformation } from 'src/app/core/model/checkout_data';
+import { ConnectorService } from 'src/app/core/service/connector.service';
 import { Basket } from 'src/app/core/util/basket';
 import { BasketItem } from 'src/app/shopping-cart/shopping-cart.component';
 
@@ -11,24 +15,31 @@ export class CheckoutComponent implements OnInit {
 
     cartItems: Array<BasketItem> = [];
 
-    constructor() { }
+    personalInformation: PersonalInformation = new PersonalInformation("Bastian", "Haider", "Europaplatz 03", "Linz", "Upper Austria", "4030");
 
-    ngOnInit(): void {
-        Basket.accessWrapper((items) => {
-            this.cartItems = items;
-            return items;
-        })
+    constructor(private connector: ConnectorService, private snack: MatSnackBar, private router: Router) { }
+
+    async ngOnInit() {
+        this.refetch();
+    }
+
+    async refetch() {
+        this.cartItems = await this.connector.getBasket();
     }
 
     basketSum() {
-        return Basket.basketSum();
+        var sum = 0;
+        this.cartItems.forEach(x => sum += x.count * x.item.price);
+        return sum;
     }
 
     basketCount() {
-        var count: number = 0;
-        Basket.accessWrapper((items) => { 
-            count = items.length; 
-            return items });
-        return count;
+        return this.cartItems.length;
+    }
+
+    checkout() {
+        this.connector.checkout(this.personalInformation);
+        this.snack.open("Checkout erfolgreich!", "Okay");
+        this.router.navigate(["/home"]);
     }
 }

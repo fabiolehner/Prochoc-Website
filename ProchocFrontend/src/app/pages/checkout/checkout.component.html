@@ -6,201 +6,199 @@
     </div>
 </div>
 <br>
-<form action="" class="needs-validation" novalidate>
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-            <div class="container">
-                    <h3 class="mb-4">Zahlungs Informationen</h3>
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label for="firstname" class="form-label">Vorname</label>
-                                <input id="firstname" type="text" class="form-control" placeholder="Bastian" required>
-                                <div class="invalid-feedback">Falsche Eingabe!</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="lastname" class="form-label">Nachname</label>
-                                <input id="lastname" type="text" class="form-control" placeholder="Haider" required>
-                                <div class="invalid-feedback">Falsche Eingabe!</div>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="address1" class="form-label">Addresse</label>
-                                <input id="address1" type="text" class="form-control" placeholder="Linzerstraße 2123" required>
-                                <div class="invalid-feedback">Falsche Eingabe!</div>
-                            </div>
-                            
-                        <div class="col-md-4">
-                            <label for="city" class="form-label">Stadt</label>
-                            <input id="city" type="text" class="form-control" placeholder="Leonding" required>
+<div class="container">
+    <div class="row">
+        <div class="col-8">
+        <div class="container">
+                <h3 class="mb-4">Zahlungs Informationen</h3>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="firstname" class="form-label">Vorname</label>
+                            <input id="firstname" type="text" class="form-control" placeholder="Bastian" required [(ngModel)]="personalInformation.firstName">
                             <div class="invalid-feedback">Falsche Eingabe!</div>
                         </div>
-                        <div class="col-md-4">
-                            <label for="state" class="form-label">Bundesland</label>
-                            <select id="state" class="form-control" required> 
-                            <option value=""> Auswählen </option>
-                            <option value="oberoesterreich"> Oberösterreich</option>
-                            <option value="kaernten"> Kärnten</option>
-                            <option value="niederoesterreich"> Niederösterreich </option>
-                            <option value="tirol"> Tirol </option>
-                            <option value="wien"> Wien </option>
-                            <option value="burgenland"> Burgenland </option>
-                            <option value="voralberg"> Voralberg </option>
-                            </select>
+                        <div class="col-md-6">
+                            <label for="lastname" class="form-label">Nachname</label>
+                            <input id="lastname" type="text" class="form-control" placeholder="Haider" required [(ngModel)]="personalInformation.lastName">
                             <div class="invalid-feedback">Falsche Eingabe!</div>
                         </div>
-                        <div class="col-md-4">
-                            <label for="zip" class="form-label">Postleitzahl</label>
-                            <input id="zip" type="text" class="form-control" placeholder="4060" required>
-                            <div class="invalid-feedback">Falsche Eingabe</div>
-                        </div>
-                        </div>
-
-                        <hr class="my-4">
-
-                    <div class="col-12">
-                    <div class="form-check"> 
-                        <input id="sameaddress" type="checkbox" class="form-check-input" onclick="displayShipping()"/>
-                        <label class="form-check-label" for="sameaddress">Meine Rechnungs und Versandadresse sind gleich</label>
-                    </div>
-                    </div>
-                    <br>
-
-                    <h3 id ="shippingheader" class="mb-4">Versand Informationen</h3>
-                    <div id="shipping">
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <label for="firstname" class="form-label">Vorname</label>
-                                <input id="firstname" type="text" class="form-control" placeholder="Bastian" required>
-                                <div class="invalid-feedback">Falsche Eingabe!</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="lastname" class="form-label">Nachname</label>
-                                <input id="lastname" type="text" class="form-control" placeholder="Haider" required>
-                                <div class="invalid-feedback">Falsche Eingabe!</div>
-                            </div>
-                            <div class="col-md-8">
-                                <label for="address1" class="form-label">Addresse</label>
-                                <input id="address1" type="text" class="form-control" placeholder="Linzerstraße 2123" required>
-                                <div class="invalid-feedback">Falsche Eingabe!</div>
-                            </div>
-                            
-                        <div class="col-md-4">
-                            <label for="city" class="form-label">Stadt</label>
-                            <input id="city" type="text" class="form-control" placeholder="Leonding" required>
-                            <div class="invalid-feedback">Falsche Eingabe!</div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="state" class="form-label">Bundesland</label>
-                            <select id="state" class="form-control" required> 
-                            <option value=""> Auswählen </option>
-                            <option value="oberoesterreich"> Oberösterreich</option>
-                            <option value="kaernten"> Kärnten</option>
-                            <option value="niederoesterreich"> Niederösterreich </option>
-                            <option value="tirol"> Tirol </option>
-                            <option value="wien"> Wien </option>
-                            <option value="burgenland"> Burgenland </option>
-                            <option value="voralberg"> Voralberg </option>
-                            </select>
-                            <div class="invalid-feedback">Falsche Eingabe!</div>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="zip" class="form-label">Postleitzahl</label>
-                            <input id="zip" type="text" class="form-control" placeholder="4060" required>
-                            <div class="invalid-feedback">Falsche Eingabe</div>
-                        </div>
-                    </div>
-                    </div>
-                        
-
-                        <hr class="my-5">
-                    
-                    <h3 class="mb-4">Zahlungs Informationen</h3>
-                    <h5>Zahlungsmöglichkeiten</h5>
-                    <div class="icon-container">
-                    <em class="fa fa-cc-visa" style="color:navy;font-size:80px;"></em>
-                    <em class="fa fa-cc-amex" style="color:blue;font-size:80px;"></em>
-                    <em class="fa fa-cc-mastercard" style="color:red;font-size:80px;"></em>
-                    <em class="fa fa-cc-discover" style="color:orange;font-size:80px;"></em>
-                    <em class="fa fa-cc-paypal" style="color:black;font-size:80px"></em>
-                    </div>
-                    <br>
-                    <div class="form-check">
-                    <input id ="card" name="payment" type="radio" class="form-check-input" required checked>
-                    <label for="card">Kreditkarte</label>
-                    </div>
-                    <div class="form-check">
-                    <input id ="paypal" name="payment" type="radio" class="form-check-input" required>
-                    <label for="paypal">Paypal</label>
-                    </div>
-                
-
-                    <div class="row my-3 gy-3">
-                    <div class="col-md-6">
-                        <label for="paymentname" class="form-label">Name</label>
-                        <small class="text-muted">(Karte)</small>
-                        <input id="paymentname" type="text" class="form-control" placeholder="Bastian Haider" required> 
-                        <div class="invalid-feedback"> Falsche Eingabe!</div>
-                        <div class="row my-3 gy-3">
                         <div class="col-md-8">
-                        <label for="email" class="form-label">Email</label>
-                        <small class="text-muted">(Optional)</small>
-                        <input id="email" type="text" class="form-control" placeholder="bastian@email.com"> 
+                            <label for="address1" class="form-label">Addresse</label>
+                            <input id="address1" type="text" class="form-control" placeholder="Linzerstraße 2123" required [(ngModel)]="personalInformation.address">
+                            <div class="invalid-feedback">Falsche Eingabe!</div>
                         </div>
+                        
+                    <div class="col-md-4">
+                        <label for="city" class="form-label">Stadt</label>
+                        <input id="city" type="text" class="form-control" placeholder="Leonding" required [(ngModel)]="personalInformation.city">
+                        <div class="invalid-feedback">Falsche Eingabe!</div>
                     </div>
+                    <div class="col-md-4">
+                        <label for="state" class="form-label">Bundesland</label>
+                        <select id="state" class="form-control" required [(ngModel)]="personalInformation.state"> 
+                            <option [ngValue]=""> Auswählen </option>
+                            <option [ngValue]="'oberoesterreich'"> Oberösterreich</option>
+                            <option [ngValue]="'kaernten'"> Kärnten</option>
+                            <option [ngValue]="'niederoesterreich'"> Niederösterreich </option>
+                            <option [ngValue]="'tirol'"> Tirol </option>
+                            <option [ngValue]="'wien'"> Wien </option>
+                            <option [ngValue]="'burgenland'"> Burgenland </option>
+                            <option [ngValue]="'voralberg'"> Voralberg </option>
+                        </select>
+                        <div class="invalid-feedback">Falsche Eingabe!</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="zip" class="form-label">Postleitzahl</label>
+                        <input id="zip" type="text" class="form-control" placeholder="4060" required>
+                        <div class="invalid-feedback">Falsche Eingabe</div>
+                    </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                <div class="col-12">
+                <div class="form-check"> 
+                    <input id="sameaddress" type="checkbox" class="form-check-input" onclick="displayShipping()"/>
+                    <label class="form-check-label" for="sameaddress">Meine Rechnungs und Versandadresse sind gleich</label>
+                </div>
+                </div>
+                <br>
+
+                <h3 id ="shippingheader" class="mb-4">Versand Informationen</h3>
+                <div id="shipping">
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="firstname" class="form-label">Vorname</label>
+                            <input id="firstname" type="text" class="form-control" placeholder="Bastian" required>
+                            <div class="invalid-feedback">Falsche Eingabe!</div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="lastname" class="form-label">Nachname</label>
+                            <input id="lastname" type="text" class="form-control" placeholder="Haider" required>
+                            <div class="invalid-feedback">Falsche Eingabe!</div>
+                        </div>
+                        <div class="col-md-8">
+                            <label for="address1" class="form-label">Addresse</label>
+                            <input id="address1" type="text" class="form-control" placeholder="Linzerstraße 2123" required>
+                            <div class="invalid-feedback">Falsche Eingabe!</div>
+                        </div>
+                        
+                    <div class="col-md-4">
+                        <label for="city" class="form-label">Stadt</label>
+                        <input id="city" type="text" class="form-control" placeholder="Leonding" required>
+                        <div class="invalid-feedback">Falsche Eingabe!</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="state" class="form-label">Bundesland</label>
+                        <select id="state" class="form-control" required> 
+                        <option value=""> Auswählen </option>
+                        <option value="oberoesterreich"> Oberösterreich</option>
+                        <option value="kaernten"> Kärnten</option>
+                        <option value="niederoesterreich"> Niederösterreich </option>
+                        <option value="tirol"> Tirol </option>
+                        <option value="wien"> Wien </option>
+                        <option value="burgenland"> Burgenland </option>
+                        <option value="voralberg"> Voralberg </option>
+                        </select>
+                        <div class="invalid-feedback">Falsche Eingabe!</div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="zip" class="form-label">Postleitzahl</label>
+                        <input id="zip" type="text" class="form-control" placeholder="4060" required>
+                        <div class="invalid-feedback">Falsche Eingabe</div>
+                    </div>
+                </div>
+                </div>
+                    
+
+                    <hr class="my-5">
+                
+                <h3 class="mb-4">Zahlungs Informationen</h3>
+                <h5>Zahlungsmöglichkeiten</h5>
+                <div class="icon-container">
+                <em class="fa fa-cc-visa" style="color:navy;font-size:80px;"></em>
+                <em class="fa fa-cc-amex" style="color:blue;font-size:80px;"></em>
+                <em class="fa fa-cc-mastercard" style="color:red;font-size:80px;"></em>
+                <em class="fa fa-cc-discover" style="color:orange;font-size:80px;"></em>
+                <em class="fa fa-cc-paypal" style="color:black;font-size:80px"></em>
+                </div>
+                <br>
+                <div class="form-check">
+                <input id ="card" name="payment" type="radio" class="form-check-input" required checked>
+                <label for="card">Kreditkarte</label>
+                </div>
+                <div class="form-check">
+                <input id ="paypal" name="payment" type="radio" class="form-check-input" required>
+                <label for="paypal">Paypal</label>
+                </div>
+            
+
+                <div class="row my-3 gy-3">
+                <div class="col-md-6">
+                    <label for="paymentname" class="form-label">Name</label>
+                    <small class="text-muted">(Karte)</small>
+                    <input id="paymentname" type="text" class="form-control" placeholder="Bastian Haider" required> 
+                    <div class="invalid-feedback"> Falsche Eingabe!</div>
+                    <div class="row my-3 gy-3">
+                    <div class="col-md-8">
+                    <label for="email" class="form-label">Email</label>
+                    <small class="text-muted">(Optional)</small>
+                    <input id="email" type="text" class="form-control" placeholder="bastian@email.com"> 
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-6">
+                <label for="paymentcard" class="form-label">Kreditkartenummer</label>
+                <small class="text-muted">(16-Ziffern)</small>
+                <input id="paymentcard" type="text" class="form-control" placeholder="1111 3333 5555 7777" required>
+                <div class="invalid-feedback">Falsche Eingabe!</div>
+
+                <div class="row my-3 gy-3">
+                    <div class="col-md-6">
+                    <label for="cvv" class="form-label">CVV</label>
+                    <input id="cvv" type="text" class="form-control" placeholder="123" required> 
+                    <div class="invalid-feedback"> Falsche Eingabe!</div>
                     </div>
                     <div class="col-md-6">
-                    <label for="paymentcard" class="form-label">Kreditkartenummer</label>
-                    <small class="text-muted">(16-Ziffern)</small>
-                    <input id="paymentcard" type="text" class="form-control" placeholder="1111 3333 5555 7777" required>
-                    <div class="invalid-feedback">Falsche Eingabe!</div>
-
-                    <div class="row my-3 gy-3">
-                        <div class="col-md-6">
-                        <label for="cvv" class="form-label">CVV</label>
-                        <input id="cvv" type="text" class="form-control" placeholder="123" required> 
-                        <div class="invalid-feedback"> Falsche Eingabe!</div>
-                        </div>
-                        <div class="col-md-6">
-                        <label for="expiration" class="form-label">Ablaufsdatum</label>
-                        <input id="expiration" type="text" class="form-control" placeholder="(DD/YYYY)" required> 
-                        <div class="invalid-feedback"> Falsche Eingabe!</div>
-                        </div>
+                    <label for="expiration" class="form-label">Ablaufsdatum</label>
+                    <input id="expiration" type="text" class="form-control" placeholder="(DD/YYYY)" required> 
+                    <div class="invalid-feedback"> Falsche Eingabe!</div>
                     </div>
                 </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg btn-block">Speichern</button>
-            </div>
-            <div class="col-4">
-            <div class="row-4">
-                <h4 class="d-flex justify-content-between align-item-center">
-                <span class="text-muted">Einkaufswagen</span>
-                <span class="badge bg-secondary squared-pill">{{basketCount()}}</span>
-                </h4>
-                <ul class="list-group">
-                <li class="list-group-item d-flex justify-content-between" *ngFor="let p of cartItems">
-                    <div>
-                    <h5>{{p.item.name}}</h5>
-                    <span class="text-muted">{{p.count}} Stk.</span>
-                    </div>
-                    <span class="text-muted">{{p.item.price * p.count}} €</span>
-                </li>
-                <br>
-                <br>               
-                <li class="list-group-item d-flex justify-content-between">
-                    <div>
-                    <h5>Total</h5>
-                    </div>
-                    <span class="">€ {{ basketSum() }}</span>
-                </li>
-                </ul>
-                <br>
-                <button type="submit" class="btn btn-warning btn-lg btn-block">Bestellen</button>
             </div>
             </div>
         </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Speichern</button>
+        </div>
+        <div class="col-4">
+        <div class="row-4">
+            <h4 class="d-flex justify-content-between align-item-center">
+            <span class="text-muted">Einkaufswagen</span>
+            <span class="badge bg-secondary squared-pill">{{basketCount()}}</span>
+            </h4>
+            <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between" *ngFor="let p of cartItems">
+                <div>
+                <h5>{{p.item.name}}</h5>
+                <span class="text-muted">{{p.count}} Stk.</span>
+                </div>
+                <span class="text-muted">{{p.item.price * p.count}} €</span>
+            </li>
+            <br>
+            <br>               
+            <li class="list-group-item d-flex justify-content-between">
+                <div>
+                <h5>Total</h5>
+                </div>
+                <span class="">€ {{ basketSum() }}</span>
+            </li>
+            </ul>
+            <br>
+            <button type="submit" class="btn btn-warning btn-lg btn-block" (click)="checkout()">Bestellen</button>
+        </div>
+        </div>
     </div>
-</form>
+</div>
 
 
 <!-- Optional JavaScript; choose one of the two! -->
