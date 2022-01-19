@@ -163,7 +163,7 @@ namespace ProchocBackend.Controllers
             if (basket.Products == null)
                 basket.Products = new();
 
-            var entry = basket.Products.FirstOrDefault(x => x.Id == requestModel.ProductId);
+            var entry = basket.Products.FirstOrDefault(x => x?.Product?.Id == requestModel.ProductId);
             if (entry == null)
             {
                 basket.Products.Add(new BasketEntry
@@ -194,12 +194,20 @@ namespace ProchocBackend.Controllers
                 .ThenInclude(p => p.Product)
                 .FirstOrDefault();
             var entry = basket.Products.Where(x => 
-                x.Product.Id == requestModel.ProductId && x.Count == requestModel.Count)
+                x.Product.Id == requestModel.ProductId)
                 .FirstOrDefault();
             if (entry != null)
             {
-                basket.Products.Remove(entry);
-                _db.Baskets.Update(basket);
+                entry.Count -= requestModel.Count;
+                if (entry.Count == 0)
+                {
+                    _db.BasketEntries.Remove(entry);
+                    _db.Baskets.Update(basket);
+                }
+                else
+                {
+                    _db.BasketEntries.Update(entry);
+                }
                 await _db.SaveChangesAsync();
                 return Ok();
             }
@@ -222,6 +230,31 @@ namespace ProchocBackend.Controllers
                 Item = x.Product,
                 Count = x.Count
             }).ToList();
+        }
+
+        public record PersonalInformation(string FirstName, string LastName, string Address, string City, string State, string ZipCode);
+        public record DeliveryInformation(PersonalInformation PersonalInformation);
+        public record CheckoutRequestModel(PersonalInformation PersonalInformation, DeliveryInformation DeliveryInformation);
+
+        [HttpPost]
+        [Authorize]
+        [Route("checkout")]
+        public IActionResult Checkout([FromBody] CheckoutRequestModel model)
+        {
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null) return Unauthorized();
+
+            var basket = _db.Baskets.Include(x => x.User).Include(x => x.Products).ThenInclude(x => x.Product)
+                .Where(x => x.User.Email == email)
+                .FirstOrDefault();
+
+            MailUtil.SendCheckoutEmail(user, basket, model.DeliveryInformation);
+
+            basket.Products.Clear();
+            _db.Baskets.Update(basket);
+            _db.SaveChanges();
+            return Ok();
         }
 
         public record RegisterModel(string FirstName, string LastName, string Email,
