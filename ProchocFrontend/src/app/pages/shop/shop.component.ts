@@ -26,7 +26,6 @@ export class ShopComponent implements OnInit {
     }
 
     openProduct(p: ShopItem) {
-        console.log("oasch");
         this.router.navigate(["product", p.id]);
     }
 }

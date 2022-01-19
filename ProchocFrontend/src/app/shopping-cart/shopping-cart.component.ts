@@ -58,10 +58,14 @@ export class ShoppingCartComponent implements OnInit {
 
     async incrementCount(i: BasketItem) {
         i.count = i.count + 1;
+        await this.connector.addToBasket(i.item, 1, () => {});
+        await this.refetch();
     }
 
-    decrementCount(i: BasketItem) {
+    async decrementCount(i: BasketItem) {
         i.count = Math.max(1, i.count - 1);
+        await this.connector.deleteBasketItem(new BasketItem(i.item, 1));
+        await this.refetch();
     }
 
     calculateSum(): Number {
