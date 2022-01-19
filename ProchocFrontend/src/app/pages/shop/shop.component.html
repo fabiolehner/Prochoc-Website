@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <br>
 <div id="shop-content">
     <p id="title">Shop</p>
@@ -10,3 +11,17 @@
     </div>
     <br>
 </div>
+=======
+<br>
+<div id="shop-content">
+    <p id="title">Shop</p>
+    <div id="shop-items">
+        <mat-card class="shop-item" *ngFor="let i of shopItems" (click)="openProduct(i)">
+            <img id="item-image" [src]="i.picture"/>
+            <p id="item-title">{{ i.name }}</p>
+            <p id="item-price">{{ i.price }} €</p>
+        </mat-card>    
+    </div>
+    <br>
+</div>
+>>>>>>> Bastian

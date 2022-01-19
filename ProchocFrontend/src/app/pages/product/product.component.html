@@ -3,11 +3,19 @@
 <br>
 <div id="content">
     <div id="left">
+<<<<<<< HEAD
         <div id="img-wrapper">
             <img src="{{product.picture}}">
         </div>
     </div>
     <div id="right">
+=======
+        <div id="img-wrapper" *ngIf="product != undefined">
+            <img src="{{product.picture}}">
+        </div>
+    </div>
+    <div id="right" *ngIf="product != undefined">
+>>>>>>> Bastian
         <p id="title">{{product.name}}</p>
         <div id="price-wrapper">
             <p id="price">{{product.price}} €</p>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #login-title {
     margin-top: 2em;
     font-size: 3em;
@@ -21,4 +22,29 @@
     margin-top: 1em;
     text-align: center;
     font-size: 0.75em;
+=======
+#login-title {
+    margin-top: 2em;
+    font-size: 3em;
+    text-align: center;
+}
+
+#login-card {
+    width: 15em;
+    height: 18em;
+
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 15em;
+}
+
+#login-button {
+    width: 100%;
+}
+
+#register-text {
+    margin-top: 1em;
+    text-align: center;
+    font-size: 0.75em;
+>>>>>>> Bastian
 }
