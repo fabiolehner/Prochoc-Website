@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <div id="header">
     <p id="title">PROCHOC</p>
     <div id="links">
@@ -57,3 +58,64 @@
         </div>
     </div>
 </div>
+=======
+<div id="header">
+    <p id="title">PROCHOC</p>
+    <div id="links">
+        <a id="main-page-login" style="margin-top: 1.6em;" routerLink="login" *ngIf="!isLoggedIn()">
+            <div >
+                <mat-icon>login</mat-icon>
+                <span style="font-size: 0.8em">Login</span>
+            </div>
+        </a>
+        <a id="main-page-login" style="margin-top: 1.6em;" routerLink="logout" *ngIf="isLoggedIn()">
+            <section *ngIf="isLoggedIn()" id="loginPanel">
+                <p>Eingeloggt als {{ userInfo.firstName }} {{ userInfo.lastName }}</p>
+                <button mat-icon-button (click)="toggleShoppingCart()">
+                    <mat-icon>logout</mat-icon>
+                </button>
+            </section>
+        </a>
+        <a id="shopping-cart-button">
+            <button mat-icon-button (click)="toggleShoppingCart()">
+                <mat-icon>shopping_cart</mat-icon>
+            </button>
+        </a>
+        <a routerLink="about">About</a>
+        <a routerLink="shop">Shop</a>
+        <a routerLink="home">Home</a>
+    </div>
+</div>
+<shopping-cart></shopping-cart>
+<div id="content">
+    <router-outlet></router-outlet>
+    <div id="footer-wrapper">
+        <div id="footer">
+            <div class="col">
+                <h1>COMPANY</h1>
+                <ul>
+                    <li><a href="about.html" class="link">About</a></li>
+                    <li><a href="impressum.html" class="link">Impressum</a></li>
+                    <li>Services</li>
+                </ul>
+            </div>
+            <div class="col">
+                <h1>COMPANY</h1>
+                <ul>
+                    <li>Contact us</li>
+                    <li>Web chat</li>
+                    <li>Open ticket</li>
+                </ul>
+            </div>
+            <div class="col social">
+                <h1>COMPANY</h1>
+                <ul>
+                    <li><img class="social" src="/assets/images/facebook.png"></li>
+                    <li><img class="social" src="/assets/images/twitter.png"></li>
+                    <li><img class="social" src="/assets/images/instagram.png"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+>>>>>>> Stashed changes
