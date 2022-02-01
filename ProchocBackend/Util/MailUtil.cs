@@ -84,6 +84,7 @@ namespace ProchocBackend.Util
     </head>
     <body> -->
         <h1 style=""font-size: 3em;"">Bestellbestätigung</h1>
+        <h2 style=""font-size: 2em;"">Deine Bestellnummer: $basketId</h2>
         <h3 style=""font-size: 1em"" > Deine Bestellung ist auf dem Weg!</h3>
         <br>
         $products
@@ -119,6 +120,7 @@ namespace ProchocBackend.Util
                         .Replace("$title", x.Product.Name)
                         .Replace("$image", "https://prochoc.azurewebsites.net/" + x.Product.Picture)
                         .Replace("$stk", x.Count.ToString())
+                        .Replace("$basketId", x.Id.ToString())
                         .Replace("$price", "€ " + (x.Count * float.Parse(x.Product.Price, CultureInfo.InvariantCulture)))
                     )
                 )
