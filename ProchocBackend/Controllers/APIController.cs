@@ -196,7 +196,7 @@ namespace ProchocBackend.Controllers
                 .Include(b => b.Products)
                 .ThenInclude(p => p.Product)
                 .FirstOrDefault();
-            var entry = basket.Products.Where(x => 
+            var entry = basket.Products.Where(x =>
                 x.Product.Id == requestModel.ProductId)
                 .FirstOrDefault();
             if (entry != null)
