@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProchocBackend.Database;
 using ProchocBackend.Util;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -177,6 +178,8 @@ namespace ProchocBackend.Controllers
                 entry.Count += requestModel.Count;
             }
 
+            DateTime orderDate = DateTime.Now;
+            basket.OrderDate = orderDate;
             _db.Baskets.Update(basket);
             await _db.SaveChangesAsync();
             return Ok();
@@ -193,7 +196,7 @@ namespace ProchocBackend.Controllers
                 .Include(b => b.Products)
                 .ThenInclude(p => p.Product)
                 .FirstOrDefault();
-            var entry = basket.Products.Where(x => 
+            var entry = basket.Products.Where(x =>
                 x.Product.Id == requestModel.ProductId)
                 .FirstOrDefault();
             if (entry != null)

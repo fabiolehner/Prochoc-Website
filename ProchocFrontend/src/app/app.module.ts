@@ -77,6 +77,7 @@ import { ProductComponent } from './pages/product/product.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { RegisterComponent } from './pages/register/register.component';
 import { LogoutComponent } from './pages/logout/logout.component';
+import { NgxPaypalComponent, NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
     MatTableModule,
     MatInputModule,
     MatSnackBarModule,
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -137,7 +137,8 @@ export class ShoppingCartComponent implements OnInit {
     }
 
     calculatePrice(item: BasketItem): number {
-        return item.item.price * item.count;
+        var price = item.item.price * item.count;
+        return Math.round(price * 100) / 100
     }
 
     async incrementCount(i: BasketItem) {
@@ -155,7 +156,7 @@ export class ShoppingCartComponent implements OnInit {
     calculateSum(): Number {
         var sum = 0;
         this.basketItems.forEach(x => sum += (x.count as number) * (x.item.price as number));
-        return sum;
+        return Math.round(sum * 100) / 100;
     }
 
     checkout() {

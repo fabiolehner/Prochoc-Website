@@ -22,12 +22,7 @@ export class LoginComponent implements OnInit {
     redirect(jwt: string) {
         localStorage.setItem("__bearer", jwt);
         this.snackBar.open("Login erfolgreich!", "Okay");
-<<<<<<< HEAD
-        this.router.navigate(["/home"]);
-        console.log("oasch")
-=======
-        window.location.reload();
->>>>>>> Bastian
+        this.router.navigate(['shop']);
     }
 
     performLogin() {
