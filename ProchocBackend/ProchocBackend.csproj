@@ -18,11 +18,18 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="5.0.0" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.14.1" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Migrations\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="default.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

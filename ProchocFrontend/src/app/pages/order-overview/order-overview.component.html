@@ -1,0 +1,19 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align: center">Bestellübersicht</h1>
+<div id="wrapper">
+    <mat-card class="entry" *ngFor="let basket of baskets">
+        <div id="left" style="float: left">
+            <p id="date"><b>{{ formatDate(basket.orderDate) }}</b></p>
+            <p id="count">{{ count(basket) }}</p>
+            <p id="sum">{{ sum(basket) }}</p>
+        </div>
+        <div id="right" style="float: right">
+            <button id="remove" mat-button (click)="removeOrder(basket)">Entfernen</button>
+            <button id="show" mat-button (click)="showOrder(basket)">Anzeigen</button>
+        </div>
+    </mat-card>
+</div>

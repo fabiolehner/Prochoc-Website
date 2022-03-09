@@ -1,0 +1,30 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1 style="text-align: center;">Bestellbestätigung #{{ basketId }}</h1>
+<div id="orders" *ngIf="previousOrders.length > 0">
+    <h3 style="text-align: center">Frühere Bestellungen</h3>
+    <br>
+    <mat-form-field appearance="fill">
+        <mat-label>Auswählen</mat-label>
+        <mat-select [(value)]="selectedOrder">
+            <mat-option *ngFor="let order of previousOrders" [value]="order">
+                {{formatDate(order.orderDate)}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-button mat id="ordersButton" (click)="jumpToOrder()">Anzeigen</button>
+</div>
+<div id="item-wrapper">
+    <div class="item" *ngFor="let item of basketItems">
+        <br>
+        <p class="item-title" style="padding-top: 2em"><b>{{ item.item.name }}</b></p>
+        <p class="item-title" style="padding-top: 2em"><b>{{item.count}} x {{ item.item.price }} €</b></p>
+        <p class="item-title" style="padding-top: 2em;margin-left: 10em;"><b>{{Math.round(item.count * item.item.price *
+                100) / 100 }} €</b></p>
+        <img [src]="imageUtil.resolve(item.item.picture)">
+    </div>
+    <h1>Summe: {{ calculateSum() }} €</h1>
+</div>

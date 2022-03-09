@@ -1,27 +1,18 @@
-<<<<<<< HEAD
 <br>
 <div id="shop-content">
     <p id="title">Shop</p>
     <div id="shop-items">
         <mat-card class="shop-item" *ngFor="let i of shopItems" (click)="openProduct(i)">
-            <img id="item-image" [src]="i.picture"/>
+            <img id="item-image" [src]="imageUtil.resolve(i.picture)"/>
             <p id="item-title">{{ i.name }}</p>
             <p id="item-price">{{ i.price }} €</p>
-        </mat-card>    
+        </mat-card>
+        <mat-card id="create-product" class="shop-item" (click)="createProduct()" *ngIf="isAdmin">
+            <p id="item-title">Produkt Erstellen</p>
+            <mat-icon id="add-icon">
+                add
+            </mat-icon>
+        </mat-card>
     </div>
     <br>
 </div>
-=======
-<br>
-<div id="shop-content">
-    <p id="title">Shop</p>
-    <div id="shop-items">
-        <mat-card class="shop-item" *ngFor="let i of shopItems" (click)="openProduct(i)">
-            <img id="item-image" [src]="i.picture"/>
-            <p id="item-title">{{ i.name }}</p>
-            <p id="item-price">{{ i.price }} €</p>
-        </mat-card>    
-    </div>
-    <br>
-</div>
->>>>>>> Bastian

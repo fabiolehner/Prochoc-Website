@@ -1,32 +1,6 @@
-<<<<<<< HEAD:ProchocBackend/ProchocBackend/Program.cs
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-
-namespace ProchocBackend
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
-=======
-using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -39,8 +13,12 @@ namespace ProchocBackend
 {
     public class Program
     {
+        public static string UploadDir = string.Empty;
+
         public static void Main(string[] args)
         {
+            UploadDir = Path.Combine(Directory.GetCurrentDirectory(), "data");
+            Directory.CreateDirectory(UploadDir);
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -49,8 +27,7 @@ namespace ProchocBackend
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     //webBuilder.UseStartup<Startup>().UseUrls("http://localhost:80", "https://localhost:443");
-                    webBuilder.UseStartup<Startup>().UseUrls("http://localhost:5000", "https://localhost:5001");
+                    webBuilder.UseStartup<Startup>().UseUrls("http://0.0.0.0:4040", "https://0.0.0.0:4041");
                 });
     }
->>>>>>> Bastian:ProchocBackend/Program.cs
 }

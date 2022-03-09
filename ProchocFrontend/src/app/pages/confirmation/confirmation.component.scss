@@ -1,0 +1,44 @@
+#item-wrapper {
+    width: 100%em;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 3em;
+    min-height: 32em;
+}
+
+.item {
+    width: 40em;
+    height: 6em;
+    border: 2px solid black;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+    display: flex;
+    flex-flow: row;
+}
+
+.item > img {
+    position: absolute;
+    width: 5em;
+    margin-top: -0.9em;
+}
+
+.item-title {
+    margin-left: 5em;
+}
+
+#orders {
+    position: absolute;
+    right: 15em;
+    width: 20em;
+    height: 20em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ordersButton {
+    border: 1px solid black;
+    border-radius: 5px;
+}

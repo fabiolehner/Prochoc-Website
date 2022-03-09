@@ -7,7 +7,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,7 @@ namespace ProchocBackend.Controllers
     public class APIController : ControllerBase
     {
         private readonly ProchocDbContext _db;
+
         public APIController(ProchocDbContext context)
         {
             _db = context;
@@ -25,20 +28,31 @@ namespace ProchocBackend.Controllers
             {
                 Name = "PROCHOC Erdbeere",
                 Price = "4.99",
-                Picture = "/assets/images/product1.png"
+                Picture = "default"
             });
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Himbeere",
                 Price = "4.99",
-                Picture = "/assets/images/product2.png"
+                Picture = "default"
             });
             CreateDefaultProduct(new Product()
             {
                 Name = "PROCHOC Blaubeere",
                 Price = "4.99",
-                Picture = "/assets/images/product3.png"
+                Picture = "default"
             });
+
+            if (!_db.Images.Any(x => x.FileName == "default"))
+            {
+                _db.Images.Add(new Image() { FileName = "default", IsDefault = true });
+                try
+                {
+                    System.IO.File.Copy("default.png", Program.UploadDir + "/default");
+                }
+                catch (Exception) { /* lol */ }
+                _db.SaveChanges();
+            }
         }
 
         private string GetUser()
@@ -110,6 +124,7 @@ namespace ProchocBackend.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("createProduct")]
         public async Task<ActionResult> CreateProduct([FromBody] Product product)
         {
@@ -119,24 +134,54 @@ namespace ProchocBackend.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         [Route("editProduct")]
         public async Task<ActionResult> EditProduct([FromBody] Product product)
         {
-            var entry = await _db.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null) return Unauthorized();
+
+            Product entry = null;
+            if (product.Id != -1)
+            {
+                entry = await _db.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
+            }
+            else entry = product;
             entry.Name = product.Name;
             entry.Picture = product.Picture;
             entry.Price = product.Price;
 
-            _db.Products.Update(entry);
+            if (product.Id == -1)
+            {
+                entry.Id = 0;
+                _db.Products.Add(entry);
+            }
+            else
+            {
+                _db.Products.Update(entry);
+            }
             await _db.SaveChangesAsync();
-            return Ok();
+            return Ok(entry);
         }
 
         [HttpPost]
+        [Authorize]
         [Route("removeProduct")]
         public async Task<ActionResult> RemoveProduct([FromBody] Product product)
         {
             var entry = await _db.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null || user.Role != UserRole.Admin) return Unauthorized();
+
+            foreach (var basketEntry in _db.BasketEntries
+                .Include(x => x.Product)
+                .Where(x => x.Product.Id == product.Id))
+            {
+                _db.BasketEntries.Remove(basketEntry);
+            }
+
             _db.Products.Remove(entry);
             await _db.SaveChangesAsync();
             return Ok();
@@ -153,11 +198,10 @@ namespace ProchocBackend.Controllers
             if (product == null) return NotFound(); // Invalid or unavailable product given
 
             var userEmail = GetUser();
-            var y = _db.Baskets.Include(x => x.User).Where(x => x.User.Email == userEmail).ToList();
 
             var basket = await _db.Baskets
                 .Include(b => b.User)
-                .Where(b => b.User.Email == GetUser())
+                .Where(b => b.User.Email == GetUser() && b.Status == BasketStatus.NotOrdered)
                 .Include(b => b.Products)
                 .FirstOrDefaultAsync();
 
@@ -192,7 +236,7 @@ namespace ProchocBackend.Controllers
         {
             var basket = _db.Baskets
                 .Include(b => b.User)
-                .Where(b => b.User.Email == GetUser())
+                .Where(b => b.User.Email == GetUser() && b.Status == BasketStatus.NotOrdered)
                 .Include(b => b.Products)
                 .ThenInclude(p => p.Product)
                 .FirstOrDefault();
@@ -219,20 +263,82 @@ namespace ProchocBackend.Controllers
 
         [HttpGet]
         [Authorize]
-        [Route("getBasket")]
-        public ActionResult<IEnumerable> GetBasket()
+        [Route("getBaskets")]
+        public ActionResult<IEnumerable> GetBaskets()
         {
-            var basket = _db.Baskets
-                .Include(bp => bp.User)
-                .Where(bp => bp.User.Email == GetUser())
-                .Include(bp => bp.Products)
-                .ThenInclude(bp => bp.Product)
-                .FirstOrDefault();
-            return basket?.Products.Select(x => new
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null || user.Role != UserRole.Admin) return Unauthorized();
+            return _db.Baskets
+                .Include(x => x.User)
+                .Include(x => x.Products)
+                .ThenInclude(x => x.Product).ToList();
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("getBasket")]
+        public ActionResult<IEnumerable> GetBasket([FromQuery] int? basketId)
+        {
+            Basket basket = null;
+            if (basketId == null)
+            {
+                basket = _db.Baskets
+                    .Include(bp => bp.User)
+                    .Where(bp => bp.User.Email == GetUser() && bp.Status == BasketStatus.NotOrdered)
+                    .Include(bp => bp.Products)
+                    .ThenInclude(bp => bp.Product)
+                    .FirstOrDefault();
+            }
+            else basket = _db.Baskets
+                    .Where(b => b.Id == basketId)
+                    .Include(b => b.Products)
+                    .ThenInclude(be => be.Product)
+                    .FirstOrDefault();
+            return basket?.Products?.Select(x => new
             {
                 Item = x.Product,
                 Count = x.Count
             }).ToList();
+        }
+
+        [HttpPost]
+        [Authorize]
+        [Route("markDone")]
+        public ActionResult MarkDone([FromBody] Basket basketInput)
+        {
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null) return Unauthorized();
+            var basket = _db.Baskets
+                    .Where(b => b.Id == basketInput.Id)
+                    .Include(b => b.Products)
+                    .ThenInclude(be => be.Product)
+                    .FirstOrDefault();
+            if (basket != null && (basket.User == user || user.Role == UserRole.Admin))
+            {
+                basket.Status = BasketStatus.Sent;
+                _db.Baskets.Update(basket);
+                _db.SaveChanges();
+                return Ok();
+            }
+            else return Unauthorized();
+        }
+
+        public record OrderDetail(int BasketId, DateTime OrderDate);
+        [HttpGet]
+        [Authorize]
+        [Route("getPreviousOrders")]
+        public ActionResult<IEnumerable<OrderDetail>> GetPreviousOrders()
+        {
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null) return Unauthorized();
+            return _db.Baskets
+                .Where(b => b.User == user)
+                .Where(b => b.Status == BasketStatus.Ordered || b.Status == BasketStatus.Sent)
+                .Select(x => new OrderDetail(x.Id, x.OrderDate))
+                .ToList();
         }
 
         public record PersonalInformation(string FirstName, string LastName, string Address, string City, string State, string ZipCode);
@@ -249,15 +355,17 @@ namespace ProchocBackend.Controllers
             if (user == null) return Unauthorized();
 
             var basket = _db.Baskets.Include(x => x.User).Include(x => x.Products).ThenInclude(x => x.Product)
-                .Where(x => x.User.Email == email)
+                .Where(x => x.User.Email == email && x.Status == BasketStatus.NotOrdered)
                 .FirstOrDefault();
 
+            basket.Status = BasketStatus.Ordered;
+            basket.OrderDate = DateTime.Now;
+            _db.Baskets.Update(basket);
             MailUtil.SendCheckoutEmail(user, basket, model.DeliveryInformation);
 
-            basket.Products.Clear();
-            _db.Baskets.Update(basket);
+            _db.Baskets.Add(new Basket { User = user, Status = BasketStatus.NotOrdered });
             _db.SaveChanges();
-            return Ok();
+            return Ok(basket.Id);
         }
 
         public record RegisterModel(string FirstName, string LastName, string Email,
@@ -279,11 +387,10 @@ namespace ProchocBackend.Controllers
                 IsVerified = false
             };
             await _db.Users.AddAsync(user);
-            await _db.Baskets.AddAsync(new Basket { User = user });
+            await _db.Baskets.AddAsync(new Basket { User = user, Status = BasketStatus.NotOrdered });
             await _db.SaveChangesAsync();
 
             MailUtil.SendVerificationMail(user);
-
             return Ok();
         }
 
@@ -302,8 +409,91 @@ namespace ProchocBackend.Controllers
                 return Unauthorized();
             }
 
-            _db.Baskets.Add(new Basket { User = user });
             return Ok(new { Token = JwtUtil.CreateJwtFromUser(user) });
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("isAdmin")]
+        public ActionResult IsAdmin()
+        {
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null) return Unauthorized();
+            return user.Role == UserRole.Admin ? Ok() : Unauthorized();
+        }
+
+        public record ImageResult(string Name);
+        
+        [HttpPost, DisableRequestSizeLimit]
+        [Route("uploadPicture")]
+        [Authorize]
+        public async Task<ActionResult<ImageResult>> UploadPicture()
+        {
+            var email = GetUser();
+            var user = _db.Users.Where(x => x.Email == email).FirstOrDefault();
+            if (user == null) return Unauthorized();
+            try
+            {
+                var formCollection = await Request.ReadFormAsync();
+                var file = formCollection.Files.FirstOrDefault();
+                if (file == null || file.Length == 0)
+                {
+                    return BadRequest();
+                }
+
+                // Copy file to local storage
+                var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition)?.FileName?.Trim('"');
+                if (fileName == null)
+                {
+                    return BadRequest();
+                }
+
+                string name = String.Empty;
+                do
+                {
+                    name = Guid.NewGuid().ToString();
+                } while (_db.Images.Any(x => x.FileName == name));
+
+                var localPath = Path.Combine(Program.UploadDir, name);
+                using (var stream = new FileStream(localPath, FileMode.Create))
+                {
+                    file.CopyTo(stream);
+                }
+
+                // Create a link in the database
+                await _db.Images.AddAsync(new Image
+                {
+                    FileName = name,
+                });
+                await _db.SaveChangesAsync();
+                return Ok(new ImageResult(name));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex}");
+            }
+        }
+
+        [HttpGet]
+        [Route("getImage")]
+        public async Task<IActionResult> GetImage([FromQuery] string name)
+        {
+            Image image = null;
+            if (name != "default")
+            {
+                image = await _db.Images.FirstOrDefaultAsync(x => x.FileName == name);
+            }
+            else
+            {
+                image = await _db.Images.FirstOrDefaultAsync(x => x.IsDefault == true);
+            }
+            if (image == null)
+                return BadRequest();
+
+            var storedFilePath = Path.Combine(Program.UploadDir, image.FileName);
+            var content = new FileStream(storedFilePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            return File(content, "image/png");
         }
 
         [HttpGet]

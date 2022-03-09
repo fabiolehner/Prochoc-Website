@@ -8,13 +8,18 @@
     margin-bottom: 1em;
     font-size: 5em;
     text-align: center;
+
+}
+
+#shop-items {
+    display: flex;
+    flex-direction: row;
 }
 
 .shop-item {
     width: 15em;
     height: 30em;
     margin-left: 5em;
-    float: left;
 }
 
 #item-title, #item-price {
@@ -34,4 +39,17 @@
 #item-image {
     width: 100%;
     height: auto; 
+}
+
+#create-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#add-icon {
+    margin-left: -10%;
+    margin-top: 90%;
+    margin-bottom: 100%;
+    font-size: 3em;
 }

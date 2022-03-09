@@ -15,7 +15,7 @@ import { BasketItem } from 'src/app/shopping-cart/shopping-cart.component';
 export class CheckoutComponent implements OnInit {
 
     public payPalConfig ? : IPayPalConfig = undefined;
-    public paymentReceived = false; /* lol */
+    public paymentReceived = true; /* lol */
     cartItems: Array<BasketItem> = [];
 
     personalInformation: PersonalInformation = new PersonalInformation("Bastian", "Haider", "USDopaplatz 03", "Linz", "Upper Austria", "4030");
@@ -32,12 +32,12 @@ export class CheckoutComponent implements OnInit {
     }
 
     calculatePrice(p: BasketItem) {
-        return (Math.round((p.item.price * p.count) * 100) / 100);
+        return (Math.round((parseFloat(p.item.price) * p.count) * 100) / 100);
     }
 
     basketSum() {
         var sum = 0;
-        this.cartItems.forEach(x => sum += x.count * x.item.price);
+        this.cartItems.forEach(x => sum += x.count * parseFloat(x.item.price));
         return Math.round(sum * 100) / 100;
     }
 
@@ -48,9 +48,9 @@ export class CheckoutComponent implements OnInit {
     checkout() {
         if (this.paymentReceived)
         {
-            this.connector.checkout(this.personalInformation);
             this.snack.open("Checkout erfolgreich!", "Okay");
-            this.router.navigate(["/home"]);
+            this.connector.checkout(this.personalInformation, (id) => this.router.navigate(["/confirmation/" + id]));
+            
         }
         else this.snack.open("Es wurde noch keine Zahlung getätigt!", "Okay");
     }
@@ -69,14 +69,14 @@ export class CheckoutComponent implements OnInit {
                         value: x.item.price,
                     },
                 });
-                sum += x.count * x.item.price;
+                sum += x.count * parseFloat(x.item.price);
             });
             console.log(JSON.stringify(products));
             sum = Math.round(sum * 100) / 100
 
             this.payPalConfig = {
                 currency: 'USD',
-                clientId: 'AQSKFjXTMKj29KO4zTKYaM5krapoXsuOn8QlQHVmSkIB6Pl9xVVK3HxFcgxAeZBa68aOhQ_cUKcfOoqF',
+                clientId: 'AbYpglSFD-hFON5gKUJ82ypEOfaKsZKHw3gjUzH9IWxEqbv4MztPKMv4ZE45g7kXA9vueKeQt-6-TrL6',
                 createOrderOnClient: (data) => < ICreateOrderRequest > {
                     intent: 'CAPTURE',
                     purchase_units: [{

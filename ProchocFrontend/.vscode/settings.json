@@ -1,4 +1,6 @@
 {
-    "appService.defaultWebAppToDeploy": "",
-    "appService.deploySubpath": "dist"
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ]
 }

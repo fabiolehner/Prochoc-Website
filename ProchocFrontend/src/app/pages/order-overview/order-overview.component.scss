@@ -1,0 +1,33 @@
+#wrapper {
+    min-height: 60em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2em;
+}
+
+.entry {
+    width: 35em;
+    height: 8em;
+    margin-bottom: 1em;
+}
+
+#right {
+    min-height: 100%;
+}
+
+#date {
+    font-size: 1.25em;
+}
+
+#show, #remove {
+    margin-top: 2em;
+    margin-right: 0.25em;
+    border: 2px solid darkgreen;
+    color: darkgreen;
+}
+
+#remove {
+    border: 2px solid darkred;
+    color: darkred;
+}

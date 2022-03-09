@@ -1,7 +1,6 @@
-
-#content {
-    margin-top: 5em;
-    min-height: 50em;
+#wrapper {
+    width: 100%;
+    min-height: 42em;
 }
 
 #left {
@@ -27,23 +26,26 @@
 }
 
 #img-wrapper > img {
-    width: 100%;
+    width: 80%;
     height: auto;
 }
+
 
 #title {
     font-size: 3em;
     margin-top: 2em;
 }
 
-#price-wrapper {
-    width: 20%;
+#name-wrapper {
+    width: 40%;
     flex-direction: row;
     display: flex;
 }
 
-#price-wrapper > p {
-    margin-right: 1em;
+#price-wrapper {
+    width: 40%;
+    flex-direction: row;
+    display: flex;
 }
 
 #price {
@@ -54,27 +56,7 @@
     font-weight: lighter;
 }
 
-#amount-wrapper {
-    flex-direction: row;
-    display: flex;
-    border: 1px solid black;
-    max-width: 26em;
-    border-radius: 1em;
-    padding-top: 0.25em;
-}
-
-#amount-wrapper > p {
-    padding-top: 0.8em;
-    margin-left: 10em;
-    margin-right: 10em;
-}
-
-#amount-wrapper > button {
-    margin-top: 0.3em;
-    margin-left: 0.1em;
-}
-
-#add-to-cart {
+#save-product {
     margin-top: 2em;
     height: 3.5em;
     background: black;
@@ -83,40 +65,25 @@
     border-radius: 1em;
 }
 
-#add-to-cart > button {
+#save-product > button {
     color: white;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
-#edit-product {
-    margin-top: 2em;
+#edit-picture {
+    margin-left: 3em;
+    width: 18em;
     height: 3.5em;
-    background: black;
+    margin-top: 2em;
     max-width: 26em;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 1em;
 }
 
-#edit-product > button {
-    color: white;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-#delete-product {
-    margin-top: 2em;
-    height: 3.5em;
-    background: black;
-    max-width: 26em;
-    border: 1px solid black;
-    border-radius: 1em;
-}
-
-#delete-product > button {
-    color: white;
+#edit-picture > button {
+    color: black;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);

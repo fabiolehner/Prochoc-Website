@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ConnectorService } from 'src/app/core/service/connector.service';
 import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.component';
 
 @Component({
@@ -8,9 +9,9 @@ import { ShoppingCartComponent } from '../../shopping-cart/shopping-cart.compone
 })
 export class HomeComponent implements OnInit {
 
-    constructor() { }
+    constructor(private connector: ConnectorService) { }
 
-    ngOnInit(): void {
+    async ngOnInit() {
     }
 
     @ViewChild(ShoppingCartComponent) shoppingCart!: ShoppingCartComponent;

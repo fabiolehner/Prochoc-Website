@@ -118,13 +118,13 @@ namespace ProchocBackend.Util
                     string.Concat(basket.Products.Select(
                         x => ProductEntryBody
                         .Replace("$title", x.Product.Name)
-                        .Replace("$image", "https://prochoc.azurewebsites.net/" + x.Product.Picture)
+                        .Replace("$image", "https://prochoc.tk/" + x.Product.Picture)
                         .Replace("$stk", x.Count.ToString())
-                        .Replace("$basketId", x.Id.ToString())
                         .Replace("$price", "€ " + (x.Count * float.Parse(x.Product.Price, CultureInfo.InvariantCulture)))
                     )
                 )
-            );
+            )
+            .Replace("$basketId", basket.Id.ToString());
 
             var message = new MailMessage(
                 "prochoc.schoki@gmail.com",

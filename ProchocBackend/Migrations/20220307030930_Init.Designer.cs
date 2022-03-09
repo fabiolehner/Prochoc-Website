@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProchocBackend.Database;
 
 namespace ProchocBackend.Migrations
 {
     [DbContext(typeof(ProchocDbContext))]
-    partial class ProchocDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220307030930_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,9 +73,6 @@ namespace ProchocBackend.Migrations
 
                     b.Property<string>("FileName")
                         .HasColumnType("longtext");
-
-                    b.Property<bool>("IsDefault")
-                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
 

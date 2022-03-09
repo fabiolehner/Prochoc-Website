@@ -1,0 +1,42 @@
+<br>
+<br>
+<br>
+<br>
+<div id="wrapper" *ngIf="product != undefined">
+    <div id="left">
+        <div id="img-wrapper" *ngIf="product.picture">
+            <img id="product-picture" [src]="imageUtil.resolve(product.picture)">
+            <div id="edit-picture">
+                <button mat-icon-button (click)="fileInput.click()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="right" *ngIf="product != undefined">
+        <p id="title" *ngIf="!creating">
+            Produkt Ändern
+        </p>
+        <p id="title" *ngIf="creating">
+            Produkt Erstellen
+        </p>
+        <div id="name-wrapper">
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>Produktname</mat-label>
+                <input matInput placeholder="Produktname" [(ngModel)]="product.name">
+            </mat-form-field>
+        </div>
+        <div id="price-wrapper">
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>Preis in Euro</mat-label>
+                <input matInput placeholder="Preis in Euro" [(ngModel)]="product.price">
+            </mat-form-field>
+        </div>
+        <div id="save-product">
+            <button mat-icon-button (click)="saveProduct()">
+                <mat-icon>save</mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<input #fileInput type="file" style="visibility: hidden" (change)="uploadPicture($event)">
